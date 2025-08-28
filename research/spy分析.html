@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPY 泡沫风险交互式分析仪表盘</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Slate Gray & Muted Indigo -->
+    <!-- Application Structure Plan: The application maintains the successful top-down, single-page dashboard structure used for the QQQ analysis. It begins with an executive summary for a quick verdict, followed by a sticky navigation bar for non-linear exploration of key analytical dimensions (Structure, Valuation, Sentiment, Macro, History, Fundamentals). This structure is ideal for analyzing a broad index like SPY because it allows users to compare different facets of the market efficiently. For instance, a user can directly contrast the 'Valuation' section with the 'Fundamentals' to quickly form a nuanced view on whether prices are justified by earnings, a core task for any market analyst. This dashboard approach is superior to a linear report for making complex, interconnected data easily scannable and digestible. -->
+    <!-- Visualization & Content Choices: 
+        1. SPY Holdings (Top 10): Report Info -> Top 10 company weights. Goal -> Show concentration level in a broad index. Viz -> Doughnut Chart. Interaction -> Hover for details. Justification -> A doughnut chart effectively visualizes the "parts of a whole" concept, clearly showing that even in a diversified index, a few giants hold significant weight. Library -> Chart.js.
+        2. SPY Sector Allocation: Report Info -> Sector weights. Goal -> Illustrate SPY's economic diversification. Viz -> Horizontal Bar Chart. Interaction -> Hover for exact percentages. Justification -> A bar chart is optimal for comparing the weights of multiple categories (sectors), immediately highlighting the difference between SPY's balanced structure and QQQ's tech-heavy tilt. Library -> Chart.js.
+        3. Valuation Metrics (P/E, P/B): Report Info -> SPY vs. Category Average. Goal -> Benchmark SPY's valuation. Viz -> Grouped Bar Chart. Interaction -> Tooltips for precise values. Justification -> Grouped bars provide an immediate, intuitive visual comparison between the index and its peer group average on key metrics. Library -> Chart.js.
+        4. Historical P/E Comparison (Dot-com vs. Now): Report Info -> S&P 500 P/E in 2000 vs. 2025. Goal -> Provide historical context for current valuations. Viz -> Simple Bar Chart. Interaction -> None. Justification -> A simple bar chart is the most direct and impactful way to show the stark difference in valuation between the two periods, telling a key part of the "is this a bubble?" story. Library -> Chart.js.
+        5. Sentiment Indicators (VIX, Put/Call Ratios): Report Info -> VIX level and Put/Call ratio data. Goal -> Gauge overall market mood. Viz -> KPI card for VIX and a simple bar chart for Put/Call ratios. Interaction -> Hover on bars. Justification -> A KPI card delivers the VIX number with immediacy, while the bar chart visually contrasts different sentiment measures, revealing potential divergences. Library -> Chart.js.
+        6. Macroeconomic Indicators: Report Info -> Fed Funds Rate & CPI (Now vs. 2000). Goal -> Compare the macro backdrops. Viz -> Side-by-side KPI cards. Interaction -> None. Justification -> Simple, direct comparison cards are the clearest way to present these key economic data points from two different time periods.
+        7. Fundamentals of Top Holdings: Report Info -> Growth metrics for top companies. Goal -> Show the underlying financial health of market leaders. Viz -> Grid of info cards. Interaction -> None. Justification -> A card-based layout allows for a clean, scannable presentation of key performance indicators for multiple companies, reinforcing the theme of strong corporate fundamentals.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #334155; /* slate-700 */
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link.active {
+            color: #4f46e5; /* indigo-600 */
+            border-bottom-color: #4f46e5;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #4338ca; /* indigo-700 */
+        }
+        .section-title {
+            color: #1e293b; /* slate-800 */
+        }
+        .highlight {
+            color: #4f46e5; /* indigo-600 */
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-slate-800">SPY 泡沫风险分析</h1>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#summary" class="nav-link border-b-2 border-transparent pb-1">摘要</a>
+                    <a href="#structure" class="nav-link border-b-2 border-transparent pb-1">指数结构</a>
+                    <a href="#valuation" class="nav-link border-b-2 border-transparent pb-1">估值分析</a>
+                    <a href="#sentiment" class="nav-link border-b-2 border-transparent pb-1">市场情绪</a>
+                    <a href="#macro" class="nav-link border-b-2 border-transparent pb-1">宏观环境</a>
+                    <a href="#history" class="nav-link border-b-2 border-transparent pb-1">历史对比</a>
+                    <a href="#fundamentals" class="nav-link border-b-2 border-transparent pb-1">基本面</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        
+        <section id="summary" class="mb-12">
+            <div class="card p-8 text-center">
+                <h2 class="text-3xl font-bold section-title mb-4">综合裁决：是“昂贵的市场”，而非“系统性泡沫”</h2>
+                <p class="text-lg text-slate-600 max-w-4xl mx-auto">
+                    本仪表盘旨在通过多维度指标，对SPY当前的泡沫风险进行交互式分析。核心结论是：SPY所代表的美国股市整体<span class="highlight">估值偏高</span>，但其<span class="highlight">广泛的行业多元化</span>和坚实的盈利基础使其与2000年互联网泡沫时期有本质区别。当前市场的主要特征是<span class="highlight">“昂贵”而非“疯狂”</span>，风险更多体现为未来回报率的降低，而非系统性崩溃。
+                </p>
+            </div>
+        </section>
+
+        <section id="structure" class="mb-12 scroll-mt-20">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">指数结构：广泛多元化下的头部集中</h2>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">作为美国经济的晴雨表，SPY覆盖了约500家公司，实现了广泛的行业多元化。尽管如此，市值加权法依然使其表现受到少数几家超大盘股的显著影响。</p>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-center mb-4">前十大持仓权重 (截至2025年8月)</h3>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="holdingsChart"></canvas>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-center mb-4">行业配置：均衡多元</h3>
+                     <div class="chart-container h-80 md:h-96">
+                        <canvas id="sectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="valuation" class="mb-12 scroll-mt-20">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">估值显微镜：价格反映了多少未来？</h2>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">SPY的整体估值高于历史平均水平，这主要由头部高增长科技股拉动。然而，与2000年相比，当前的估值水平更为理性，并且得到了强劲企业盈利的支撑。</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-center mb-4">核心估值比率 vs. 类别平均</h3>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="valuationRatiosChart"></canvas>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-center mb-4">周期性调整市盈率 (CAPE Ratio)</h3>
+                    <p class="text-center text-slate-500 mb-6">CAPE比率（或Shiller P/E）通过对过去十年的通胀调整后盈利取平均值，平滑了经济周期的影响，是衡量长期估值的关键指标。</p>
+                    <div class="text-center">
+                        <p class="text-slate-500">当前S&P 500 CAPE 比率</p>
+                        <p class="kpi-value my-2">37.1x</p>
+                        <p class="text-slate-500">历史平均 (1881-2025): <span class="font-semibold text-slate-600">~17x</span></p>
+                        <p class="text-orange-600 font-medium mt-4">当前估值远高于历史平均水平，处于历史数据分布的最高10%区间，暗示长期回报可能承压。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sentiment" class="mb-12 scroll-mt-20">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">市场情绪：谨慎的乐观</h2>
+             <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">与QQQ所反映的科技股投机热情不同，SPY所代表的更广泛市场情绪显得更为复杂和谨慎。波动率指数处于低位，但并未出现极端贪婪的信号。</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-2">CBOE波动率指数 (VIX)</h3>
+                    <p class="kpi-value">14.50</p>
+                    <p class="text-slate-500">“恐慌指数”处于历史低位，反映市场对未来短期波动预期较低，但这也可能是一种<span class="font-semibold text-orange-600">自满情绪</span>的体现。</p>
+                </div>
+                <div class="card p-6 col-span-1 md:col-span-2">
+                    <h3 class="text-xl font-semibold text-center mb-4">看跌/看涨期权比率：情绪平衡</h3>
+                    <div class="chart-container h-64 md:h-72">
+                        <canvas id="putCallChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="macro" class="mb-12 scroll-mt-20">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">宏观环境：当前 vs. 2000年泡沫顶峰</h2>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">当前的宏观环境为估值提供了复杂信号。虽然利率远高于后金融危机时代，但相较于2000年，当前的利率和通胀环境实际上更为温和。</p>
+            <div class="grid md:grid-cols-2 gap-8 text-center">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold mb-2">有效联邦基金利率</h3>
+                    <div class="flex justify-around items-baseline mt-4">
+                        <div>
+                            <p class="text-slate-500 text-sm">2000年3月</p>
+                            <p class="text-4xl font-bold text-red-500">~5.86%</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-sm">2025年8月</p>
+                            <p class="text-4xl font-bold text-indigo-600">4.33%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold mb-2">CPI 通货膨胀率</h3>
+                    <div class="flex justify-around items-baseline mt-4">
+                        <div>
+                            <p class="text-slate-500 text-sm">2000年3月</p>
+                            <p class="text-4xl font-bold text-red-500">~3.8%</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-sm">2025年7月</p>
+                            <p class="text-4xl font-bold text-indigo-600">2.7%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="mb-12 scroll-mt-20">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">历史回响：与互联网泡沫的终极对决</h2>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">将当前与2000年对比，可以发现两者存在本质区别。最核心的差异在于公司基本面和估值的极端程度。今天的市场由盈利巨兽引领，估值虽高，但远未及当年的疯狂。</p>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-center mb-4">S&P 500 市盈率(P/E)对比</h3>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="peHistoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4">基本面实力今非昔比</h3>
+                    <p class="text-slate-600 mb-6">与2000年许多只有概念没有利润的公司不同，当今S&P 500的领导者们拥有强大的盈利能力和宽阔的护城河，为高估值提供了坚实的基础。</p>
+                    <div class="space-y-4">
+                        <div class="bg-slate-50 p-3 rounded-lg">
+                            <p class="font-medium">盈利质量</p>
+                            <p class="text-slate-600 text-sm">2024年S&P 500公司预计盈利将增长约11%，远超历史平均水平。</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-lg">
+                            <p class="font-medium">利润率</p>
+                            <p class="text-slate-600 text-sm">尽管面临成本压力，S&P 500的净利润率仍保持在11%以上的历史高位。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fundamentals" class="scroll-mt-20">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">发动机舱：核心经济部门的健康状况</h2>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">SPY的价值最终由其成分公司的基本面决定。美国经济的核心部门——科技、金融、医疗保健——都展现出强大的韧性和增长潜力。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold">科技 & 通信</h3>
+                    <p class="text-sm text-slate-500 mb-2">AI驱动的持续增长</p>
+                    <p class="text-slate-600">以微软、英伟达为代表的公司持续实现超预期增长，云服务和AI芯片需求强劲。</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold">金融</h3>
+                    <p class="text-sm text-slate-500 mb-2">高利率环境下的韧性</p>
+                    <p class="text-slate-600">以摩根大通、伯克希尔哈撒韦为代表的金融巨头受益于较高的净息差，资产负债表稳健。</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold">医疗保健</h3>
+                    <p class="text-sm text-slate-500 mb-2">创新与稳定需求</p>
+                    <p class="text-slate-600">以礼来、强生为代表的公司在新药研发（如GLP-1）和稳定医疗需求方面表现出色。</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold">消费</h3>
+                    <p class="text-sm text-slate-500 mb-2">消费者支出保持稳健</p>
+                    <p class="text-slate-600">尽管通胀压力存在，但强劲的就业市场支撑了消费支出，利好亚马逊等公司。</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold">能源</h3>
+                    <p class="text-sm text-slate-500 mb-2">资本纪律与股东回报</p>
+                    <p class="text-slate-600">以埃克森美孚为代表的能源公司注重盈利能力和股东回报，而非盲目扩张。</p>
+                </div>
+                 <div class="card p-6 flex flex-col justify-center items-center text-center">
+                    <h3 class="text-xl font-bold">结论</h3>
+                    <p class="text-slate-600 mt-2">广泛的行业健康状况为S&P 500提供了坚实的基本面支撑。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 mt-12 py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 SPY 泡沫风险交互式分析。仅供信息参考，不构成投资建议。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartFontColor = '#334155'; // slate-700
+            const gridColor = '#e2e8f0'; // slate-200
+            
+            Chart.defaults.font.family = "'Noto Sans SC', sans-serif";
+            Chart.defaults.color = chartFontColor;
+
+            const wrapLabel = (label, maxWidth) => {
+                const words = label.split(' ');
+                let line = '';
+                const lines = [];
+                for (let i = 0; i < words.length; i++) {
+                    const testLine = line + words[i] + ' ';
+                    if (testLine.length > maxWidth && i > 0) {
+                        lines.push(line.trim());
+                        line = words[i] + ' ';
+                    } else {
+                        line = testLine;
+                    }
+                }
+                lines.push(line.trim());
+                return lines;
+            };
+
+            const holdingsData = {
+                labels: ['微软', '苹果', '英伟达', '亚马逊', 'Alphabet', 'Meta', '伯克希尔', '礼来', '其他'],
+                datasets: [{
+                    label: '持仓权重',
+                    data: [7.1, 6.2, 5.1, 3.6, 4.2, 2.4, 1.7, 1.5, 68.2],
+                    backgroundColor: ['#4f46e5', '#6366f1', '#818cf8', '#a5b4fc', '#c7d2fe', '#312e81', '#3730a3', '#4338ca', '#cbd5e1'],
+                    borderColor: '#f8fafc',
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            };
+
+            new Chart(document.getElementById('holdingsChart'), {
+                type: 'doughnut',
+                data: holdingsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const sectorData = {
+                labels: ['科技', '金融', '医疗保健', '非必需消费品', '通信服务', '工业', '必需消费品', '能源', '其他'],
+                datasets: [{
+                    label: '行业权重',
+                    data: [29.1, 13.1, 12.4, 10.2, 8.9, 8.4, 6.1, 3.9, 7.9],
+                    backgroundColor: ['#4f46e5', '#6366f1', '#818cf8', '#a5b4fc', '#c7d2fe', '#e0e7ff', '#312e81', '#3730a3', '#cbd5e1'],
+                    borderRadius: 4,
+                }]
+            };
+
+            new Chart(document.getElementById('sectorChart'), {
+                type: 'bar',
+                data: sectorData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.dataset.label}: ${context.raw.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: gridColor },
+                            title: { display: true, text: '权重 (%)' }
+                        },
+                        y: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            const valuationRatiosData = {
+                labels: ['市盈率(P/E)', '市净率(P/B)', '市销率(P/S)'],
+                datasets: [{
+                    label: 'SPY',
+                    data: [24.8, 4.6, 2.8],
+                    backgroundColor: '#6366f1',
+                    borderRadius: 4,
+                }, {
+                    label: '类别平均 (大盘混合)',
+                    data: [22.5, 4.1, 2.5],
+                    backgroundColor: '#a5b4fc',
+                    borderRadius: 4,
+                }]
+            };
+
+            new Chart(document.getElementById('valuationRatiosChart'), {
+                type: 'bar',
+                data: valuationRatiosData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: gridColor },
+                            title: { display: true, text: '倍数' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return wrapLabel(this.getLabelForValue(value), 10);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const putCallData = {
+                labels: ['CBOE 总比率', 'CBOE 个股比率'],
+                datasets: [{
+                    label: '看跌/看涨比率',
+                    data: [0.95, 0.55],
+                    backgroundColor: ['#fb923c', '#34d399'], // orange for neutral, green for bullish
+                    borderRadius: 4,
+                }]
+            };
+
+            new Chart(document.getElementById('putCallChart'), {
+                type: 'bar',
+                data: putCallData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let interpretation = context.raw > 0.7 ? '中性/看跌' : '看涨';
+                                    return `比率: ${context.raw} (${interpretation})`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            title: { display: true, text: '比率' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            const peHistoryData = {
+                labels: ['2000年3月 (泡沫顶峰)', '2025年8月 (当前)'],
+                datasets: [{
+                    label: 'S&P 500 P/E',
+                    data: [30.2, 24.8],
+                    backgroundColor: ['#f87171', '#818cf8'],
+                    borderRadius: 4,
+                    barPercentage: 0.5,
+                }]
+            };
+
+            new Chart(document.getElementById('peHistoryChart'), {
+                type: 'bar',
+                data: peHistoryData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            title: { display: true, text: '市盈率 (倍)' }
+                        },
+                        x: {
+                            grid: { display: false },
+                             ticks: {
+                                callback: function(value, index, values) {
+                                    return wrapLabel(this.getLabelForValue(value), 16);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
