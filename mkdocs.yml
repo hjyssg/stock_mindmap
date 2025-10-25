@@ -1,0 +1,55 @@
+site_name: Stock Mindmap Notes
+site_description: "个人投资与市场观察笔记"
+site_url: https://<your-github-username>.github.io/stock_mindmap/
+repo_url: https://github.com/<your-github-username>/stock_mindmap
+repo_name: stock_mindmap
+docs_dir: notes
+use_directory_urls: true
+
+nav:
+  - 首页: index.md
+  - 思维导图: mindmap.md
+  - 分类:
+      - 投资策略: strategy/index.md
+      - 市场事件: markets/index.md
+      - 宏观经济: economy/index.md
+      - 中国与政策: china/index.md
+      - 个人理财: personal_finance/index.md
+      - 杂项灵感: misc/index.md
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - toc.integrate
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: blue
+      accent: indigo
+    - scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: 切换夜间模式
+  font:
+    text: "Source Sans Pro"
+    code: "JetBrains Mono"
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - pymdownx.emoji
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+plugins:
+  - search
