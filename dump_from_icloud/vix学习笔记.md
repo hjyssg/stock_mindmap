@@ -1,4 +1,3 @@
-
 vix学习笔记
 
 VIX与隐含波动率的关系
@@ -14,7 +13,6 @@ VIX的本质
 做空vix -》 SVXY
 
 https://www.youtube.com/watch?v=1v9ADPIatBY&ab_channel=%E8%82%AF.%E6%9E%97%E8%AA%AA%E6%A3%92KenLintellsbonds
-
 
 VIX指数（Volatility Index），通常被称为“恐慌指数”，是由芝加哥期权交易所（CBOE）计算和发布的，用于衡量市场对未来30天股票市场波动性的预期。VIX的数值并没有固定的上下限，但通常会在一个相对较广的范围内波动。以下是一些关于VIX数值范围的参考：
 
