@@ -8,7 +8,6 @@ use_directory_urls: true
 
 nav:
   - 首页: index.md
-  - 思维导图: mindmap.md
   - 分类:
       - 投资策略: strategy/index.md
       - 市场事件: markets/index.md

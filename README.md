@@ -5,7 +5,7 @@
 ## 目录结构
 
 - `notes/`：全部原始 Markdown 笔记，保持分类目录不变。
-  - `index.md`、`mindmap.md` 用于站点首页与导图。
+  - `index.md` 用于站点首页。
   - 各子目录的 `index.md` 自动列出该分类下的笔记清单。
 - `research/`：深度研究（AI、经济等）。
 - `prompts/`：各类 Prompt 和模板。
