@@ -21,7 +21,6 @@ theme:
   name: material
   language: zh
   features:
-    - navigation.instant
     - navigation.tracking
     - navigation.tabs
     - toc.integrate
