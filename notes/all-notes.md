@@ -93,6 +93,7 @@
 - [资本利得税的注意点](personal_finance/资本利得税的注意点.md)
 
 ## 杂项灵感
+- [Peter Lynch 1994 Lecture — 核心观点总结](misc/Peter Lynch 1994 Lecture — 核心观点总结.md)
 - [Peter Lynch 1994 Lecture](misc/Peter Lynch 1994 Lecture.md)
 - [为什么自动编程工具还不能直接看网页调试？](misc/为什么自动编程工具还不能直接看网页调试？.md)
 - [书籍推荐](misc/书籍推荐.md)
