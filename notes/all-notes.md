@@ -33,7 +33,7 @@
 - [21世纪之前的著名金融泡沫事件](markets/21世纪之前的著名金融泡沫事件.md)
 - [NDX 回调次数统计总结](markets/NDX 回调次数统计总结.md)
 - [Vix Crash的一个例子](markets/Vix Crash的一个例子.md)
-- [vix学习笔记](markets/vix学习笔记.md)
+- [VIX学习笔记](markets/VIX学习笔记.md)
 - [为什么每次危机，美股总是先跌再暴力反弹](markets/为什么每次危机，美股总是先跌再暴力反弹.md)
 - [可视化出肯尼迪被刺杀后股价走势](markets/可视化出肯尼迪被刺杀后股价走势.md)
 - [大跌抄底 deep ITM call vs TQQQ](markets/大跌抄底 deep ITM call vs TQQQ.md)
