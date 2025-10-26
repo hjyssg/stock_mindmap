@@ -28,12 +28,13 @@
 - [2008年之后的世界](markets/2008年之后的世界.md)
 - [2008的原因](markets/2008的原因.md)
 - [2018年VIX爆炸事件](markets/2018年VIX爆炸事件.md)
+- [2020之后的世界](markets/2020之后的世界.md)
 - [2025年4月闪崩笔记](markets/2025年4月闪崩笔记.md)
 - [2025年的美股重要事项](markets/2025年的美股重要事项.md)
 - [21世纪之前的著名金融泡沫事件](markets/21世纪之前的著名金融泡沫事件.md)
 - [NDX 回调次数统计总结](markets/NDX 回调次数统计总结.md)
 - [Vix Crash的一个例子](markets/Vix Crash的一个例子.md)
-- [VIX学习笔记](markets/VIX学习笔记.md)
+- [vix学习笔记](markets/vix学习笔记.md)
 - [为什么每次危机，美股总是先跌再暴力反弹](markets/为什么每次危机，美股总是先跌再暴力反弹.md)
 - [可视化出肯尼迪被刺杀后股价走势](markets/可视化出肯尼迪被刺杀后股价走势.md)
 - [大跌抄底 deep ITM call vs TQQQ](markets/大跌抄底 deep ITM call vs TQQQ.md)
@@ -92,6 +93,7 @@
 - [资本利得税的注意点](personal_finance/资本利得税的注意点.md)
 
 ## 杂项灵感
+- [Peter Lynch 1994 Lecture](misc/Peter Lynch 1994 Lecture.md)
 - [为什么自动编程工具还不能直接看网页调试？](misc/为什么自动编程工具还不能直接看网页调试？.md)
 - [书籍推荐](misc/书籍推荐.md)
 - [永远不要小瞧台湾的芯片产业链](misc/永远不要小瞧台湾的芯片产业链.md)

@@ -20,7 +20,7 @@
    ```
 2. 本地预览：
    ```bash
-   mkdocs serve
+   python -m mkdocs serve
    ```
    启动后访问 <http://127.0.0.1:8000/>。
 3. 构建静态文件：
