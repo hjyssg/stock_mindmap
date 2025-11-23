@@ -60,6 +60,7 @@
 - [二战后美国利率和CPI变化概述](economy/二战后美国利率和CPI变化概述.md)
 - [信用派生](economy/信用派生.md)
 - [历史上主要货币贬值超过10%的时期](economy/历史上主要货币贬值超过10%的时期.md)
+- [政府衰退的时候都会不承认](economy/政府衰退的时候都会不承认.md)
 - [洗钱（Money Laundering）](economy/洗钱（Money Laundering）.md)
 - [特朗普于 2025年7月4日 签署《One Big Beautiful Bill》](economy/特朗普于 2025年7月4日 签署《One Big Beautiful Bill》.md)
 - [特朗普的“滚动最后通牒”策略分析](economy/特朗普的“滚动最后通牒”策略分析.md)
