@@ -7,9 +7,11 @@
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, NamedTuple, Sequence, Tuple
+from typing import Dict, Iterable, List, NamedTuple, Optional, Sequence, Tuple
 
 # -----------------------------
 # 路径常量
@@ -68,6 +70,14 @@ class Category(NamedTuple):
     index_rel_path: str
 
 
+class NoteEntry(NamedTuple):
+    """记录笔记元信息，便于统一排序与渲染。"""
+
+    file: Path
+    title: str
+    created_at: datetime
+
+
 # -----------------------------
 # 工具函数
 # -----------------------------
@@ -95,6 +105,90 @@ def write_if_changed(path: Path, content: str) -> None:
     old = path.read_text(encoding="utf-8") if path.exists() else ""
     if old != content:
         path.write_text(content, encoding="utf-8")
+
+
+def get_git_creation_datetime(file_path: Path) -> Optional[datetime]:
+    """
+    返回文件的 Git 首次提交时间（UTC）。若查询失败则返回 None。
+
+    使用 `--diff-filter=A --follow` 以获取最初提交日期；格式统一为 ISO 8601。
+    """
+
+    try:
+        result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(ROOT),
+                "log",
+                "--diff-filter=A",
+                "--follow",
+                "--format=%aI",
+                "-1",
+                str(file_path.relative_to(ROOT)),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        timestamp = result.stdout.strip()
+        if not timestamp:
+            return None
+        return datetime.fromisoformat(timestamp).astimezone(timezone.utc)
+    except Exception:
+        return None
+
+
+def get_git_last_commit_datetime(file_path: Path) -> Optional[datetime]:
+    """返回文件最近一次提交的时间（UTC）。"""
+
+    try:
+        result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(ROOT),
+                "log",
+                "--format=%aI",
+                "-1",
+                str(file_path.relative_to(ROOT)),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        timestamp = result.stdout.strip()
+        if not timestamp:
+            return None
+        return datetime.fromisoformat(timestamp).astimezone(timezone.utc)
+    except Exception:
+        return None
+
+
+def get_repo_initial_commit_datetime() -> Optional[datetime]:
+    """返回仓库的首次提交时间（UTC）。"""
+
+    try:
+        result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(ROOT),
+                "log",
+                "--reverse",
+                "--format=%aI",
+                "-1",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        timestamp = result.stdout.strip()
+        if not timestamp:
+            return None
+        return datetime.fromisoformat(timestamp).astimezone(timezone.utc)
+    except Exception:
+        return None
 
 
 # -----------------------------
@@ -191,6 +285,44 @@ def read_note_title(note_file: Path) -> str:
     return note_file.stem
 
 
+def build_note_entries(note_files: Iterable[Path]) -> List[NoteEntry]:
+    """将原始文件列表转换为带创建时间的 NoteEntry，并按创建时间倒序排序，同日按标题升序。"""
+
+    entries: List[NoteEntry] = []
+    repo_initial = get_repo_initial_commit_datetime()
+
+    for note_file in note_files:
+        created_at = get_git_creation_datetime(note_file)
+        if created_at is None:
+            created_at = datetime.fromtimestamp(
+                note_file.stat().st_mtime, tz=timezone.utc
+            )
+
+        if repo_initial and created_at == repo_initial:
+            last_commit = get_git_last_commit_datetime(note_file)
+            if last_commit:
+                created_at = last_commit
+            else:
+                mtime = datetime.fromtimestamp(
+                    note_file.stat().st_mtime, tz=timezone.utc
+                )
+                if mtime != created_at:
+                    created_at = mtime
+
+        entries.append(
+            NoteEntry(
+                file=note_file,
+                title=md_escape(read_note_title(note_file)),
+                created_at=created_at,
+            )
+        )
+
+    return sorted(
+        entries,
+        key=lambda entry: (-entry.created_at.timestamp(), entry.title.lower()),
+    )
+
+
 def gather_categories(nav_entries: Sequence[Tuple[str, str]]) -> List[Category]:
     """根据 mkdocs 导航与目录实际情况列出分类。"""
     categories: List[Category] = []
@@ -267,24 +399,22 @@ def build_all_notes_sections(categories: Sequence[Category]) -> List[str]:
     sections: List[str] = []
 
     for category in categories:
-        note_files = sorted(
+        note_entries = build_note_entries(
             (
                 path
                 for path in category.directory.glob("*.md")
                 if path.name.lower() != "index.md"
-            ),
-            key=lambda p: p.name.lower(),
+            )
         )
 
-        if not note_files:
+        if not note_entries:
             continue
 
         sections.append(f"## {md_escape(category.title)}")
 
-        for note_file in note_files:
-            title = md_escape(read_note_title(note_file))
-            rel_path = rel_url(category.directory.name, note_file.name)
-            sections.append(f"- [{title}]({rel_path})")
+        for entry in note_entries:
+            rel_path = rel_url(category.directory.name, entry.file.name)
+            sections.append(f"- [{entry.title}]({rel_path})")
 
         sections.append("")
 
@@ -303,22 +433,20 @@ def render_all_notes(categories: Sequence[Category]) -> str:
 # -----------------------------
 def build_category_index(category: Category) -> str:
     """为每个分类目录生成 index.md 内容（自动列出该分类下的笔记）。"""
-    files = sorted(
-        (f for f in category.directory.glob("*.md") if f.name.lower() != "index.md"),
-        key=lambda p: p.name.lower(),
+    entries = build_note_entries(
+        (f for f in category.directory.glob("*.md") if f.name.lower() != "index.md")
     )
     parts: List[str] = [f"# {md_escape(category.title)}", ""]
     parts.append("> 本目录列出该分类下的全部原始笔记，方便在站点导航中快速定位。")
     parts.append("> 本页由脚本自动生成，列出该分类下的所有笔记。")
     parts.append("")
-    if not files:
+    if not entries:
         parts.append("_（暂无条目）_")
         parts.append("")
         return "\n".join(parts).rstrip() + "\n"
 
-    for f in files:
-        title = md_escape(read_note_title(f))
-        parts.append(f"- [{title}]({rel_url(f.name)})")
+    for entry in entries:
+        parts.append(f"- [{entry.title}]({rel_url(entry.file.name)})")
     parts.append("")
     return "\n".join(parts).rstrip() + "\n"
 
