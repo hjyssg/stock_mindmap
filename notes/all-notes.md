@@ -118,6 +118,7 @@
 - [资本利得税的注意点](personal_finance/资本利得税的注意点.md)
 
 ## 杂项灵感
+- [看新闻用的prompt](misc/看新闻用的prompt.md)
 - [独裁者手册 总结](misc/独裁者手册 总结.md)
 - [真伪随机概念](misc/真伪随机概念.md)
 - [Peter Lynch 1994 Lecture — 核心观点总结](misc/Peter Lynch 1994 Lecture — 核心观点总结.md)
