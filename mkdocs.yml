@@ -1,7 +1,7 @@
 site_name: Stock Mindmap Notes
 site_description: "个人投资与市场观察笔记"
-site_url: https://<your-github-username>.github.io/stock_mindmap/
-repo_url: https://github.com/<your-github-username>/stock_mindmap
+site_url: https://hjyssg.github.io/stock_mindmap/
+repo_url: https://github.com/hjyssg/stock_mindmap
 repo_name: stock_mindmap
 docs_dir: notes
 use_directory_urls: true
