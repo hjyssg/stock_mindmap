@@ -1,5 +1,7 @@
 # Peter Lynch 1994 Lecture.txt
 
+**日期**：2025-10-26
+
 A native of Boston, Mr. Lynch is a 1965 graduate of Boston College and received his MBA from the University of Pennsylvania’s Wharton School of Business Education. He served as a lieutenant in the Army before coming to Fidelity in 1969. He currently serves as vice-chairman of Fidelity, sits on the boards of Morris-Knudsen and W. R. Grace and is heavily involved in charity work. Would you please welcome Mr. Peter Lynch.
 
 Thank you very much it’s a pleasure to be here, I love this town {Washington, DC} and it’s a thrill to be here with Jim Johnson who did so much for Fannie Mae and that was the greatest single stock of my life.  It’s still my largest position and anybody who wants to talk after about how to make money; I’ll tell them how to buy more Fanne Mae and now I’ve added Freddie Mac to the list too. And Congressman Ed Markey, who went to Boston College and Boston College Law School and has done a great job in Congress for everybody in this country, but especially the people in his districts in Massachusetts. But the great honor is my wife Caroline right here, my sweetheart, and my great stock picker who found Leggs and a bunch of other good stocks. What I am going to try to do today (I don’t know what I’m supposed to do with this gavel, I never had one of these things before)

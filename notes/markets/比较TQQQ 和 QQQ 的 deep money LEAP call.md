@@ -1,3 +1,5 @@
+**日期**：2025-10-25
+
 TQQQ 和 QQQ 的 deep in the money LEAP call 在剧烈波动市场中的表现差异，核心在于：
 - 杠杆来源不同（TQQQ 是每日3倍 ETF，LEAP call 是期权）
 - 时间加权不同（TQQQ 每天重置杠杆，LEAP 是持久性杠杆）

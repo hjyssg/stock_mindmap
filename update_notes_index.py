@@ -3,6 +3,7 @@
 """
 根据 `notes/` 目录结构自动更新首页 `notes/index.md`、生成总索引 `notes/all-notes.md`，
 并为每个分类目录自动生成/更新其 `index.md`。
+同时为每篇笔记注入标准化日期行 `**日期**：YYYY-MM-DD`。
 """
 from __future__ import annotations
 
@@ -75,7 +76,7 @@ class NoteEntry(NamedTuple):
 
     file: Path
     title: str
-    created_at: datetime
+    date: datetime  # 笔记日期（取 git 首次提交 / 最后提交 / mtime / ctime 的最小值）
 
 
 # -----------------------------
@@ -191,11 +192,108 @@ def get_repo_initial_commit_datetime() -> Optional[datetime]:
         return None
 
 
+def get_note_date(file_path: Path) -> datetime:
+    """
+    取 git 首次提交时间、git 最后提交时间、文件 mtime、文件 ctime 中的最小值。
+    若 git 时间不可用，则退化为 mtime / ctime 的最小值。
+    """
+    candidates: List[datetime] = []
+
+    git_created = get_git_creation_datetime(file_path)
+    if git_created is not None:
+        candidates.append(git_created)
+
+    git_last = get_git_last_commit_datetime(file_path)
+    if git_last is not None:
+        candidates.append(git_last)
+
+    stat = file_path.stat()
+    candidates.append(datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc))
+    candidates.append(datetime.fromtimestamp(stat.st_ctime, tz=timezone.utc))
+
+    return min(candidates)
+
+
+# -----------------------------
+# 日期注入笔记文件
+# -----------------------------
+# 匹配已有的各种日期行格式，用于移除后重新注入标准化格式
+# 覆盖：**日期**：2026-06-16 / 日期：2025年7月7日 / **日期：** 2025-12-08 等
+_DATE_LINE_RE = re.compile(
+    r"^[ \t]*\**日期\**[ \t]*[:：][ \t]*[^\n]*\n?",
+    re.MULTILINE,
+)
+
+# H1 标题正则
+_H1_RE = re.compile(r"^#\s+(.+)$")
+
+
+def inject_date_to_note(file_path: Path, date: datetime) -> bool:
+    """
+    将标准化日期行 `**日期**：YYYY-MM-DD` 注入笔记文件。
+
+    策略：
+    1. 移除已有的日期行（匹配各种变体）
+    2. 在文件首行 H1 标题之后插入（H1 与日期之间留一空行）；若无 H1，则在文件开头插入
+    3. 若文件内容无变化则返回 False
+
+    返回 True 表示文件被修改。
+    """
+    raw = file_path.read_text(encoding="utf-8")
+
+    # 移除已有日期行
+    cleaned = _DATE_LINE_RE.sub("", raw)
+
+    date_str = date.strftime("%Y-%m-%d")
+    date_line = f"**日期**：{date_str}"
+
+    lines = cleaned.splitlines(keepends=True)
+
+    # 找到 H1 标题行的位置
+    h1_index = None
+    for i, line in enumerate(lines):
+        if _H1_RE.match(line.strip()):
+            h1_index = i
+            break
+
+    if h1_index is not None:
+        # 在 H1 之后插入：H1, 空行, 日期行, 空行, 正文
+        before = lines[: h1_index + 1]  # 包含 H1 行
+        after = lines[h1_index + 1:]     # H1 之后的内容
+
+        # 移除 after 开头的空行，避免出现多余空行
+        while after and after[0].strip() == "":
+            after.pop(0)
+
+        lines = before + ["\n", date_line + "\n", "\n"] + after
+    else:
+        # 无 H1，在文件开头插入：日期行, 空行, 正文
+        # 移除开头空行
+        while lines and lines[0].strip() == "":
+            lines.pop(0)
+        lines = [date_line + "\n", "\n"] + lines
+
+    new_content = "".join(lines)
+
+    # 去掉末尾多余空行，保留单个换行
+    new_content = new_content.rstrip() + "\n"
+
+    if new_content == raw.rstrip() + "\n" and date_line not in raw:
+        # 内容未实质变化
+        return False
+
+    if new_content != raw:
+        file_path.write_text(new_content, encoding="utf-8")
+        return True
+
+    return False
+
+
 # -----------------------------
 # mkdocs.yml 导航提取
 # -----------------------------
 def _extract_category_nav_by_regex(mkdocs_text: str) -> List[Tuple[str, str]]:
-    """正则回退方案：从 mkdocs.yml 中提取“分类”块内的 (title, path)。"""
+    """正则回退方案：从 mkdocs.yml 中提取"分类"块内的 (title, path)。"""
     nav_entries: List[Tuple[str, str]] = []
     lines = mkdocs_text.splitlines()
     in_categories = False
@@ -270,7 +368,6 @@ def read_category_title(index_file: Path) -> str:
 
 # 放在常量区附近
 USE_H1_TITLES = False  # ← 设为 False：显示文件名；设为 True：显示 H1（若有）
-_H1_RE = re.compile(r"^#\s+(.+)$")
 def read_note_title(note_file: Path) -> str:
     """根据开关决定标题来源：False=文件名，True=文内首个 H1 回退到文件名。"""
     if not USE_H1_TITLES:
@@ -286,40 +383,24 @@ def read_note_title(note_file: Path) -> str:
 
 
 def build_note_entries(note_files: Iterable[Path]) -> List[NoteEntry]:
-    """将原始文件列表转换为带创建时间的 NoteEntry，并按创建时间倒序排序，同日按标题升序。"""
+    """将原始文件列表转换为带日期的 NoteEntry，并按日期倒序排序，同日按标题升序。"""
 
     entries: List[NoteEntry] = []
-    repo_initial = get_repo_initial_commit_datetime()
 
     for note_file in note_files:
-        created_at = get_git_creation_datetime(note_file)
-        if created_at is None:
-            created_at = datetime.fromtimestamp(
-                note_file.stat().st_mtime, tz=timezone.utc
-            )
-
-        if repo_initial and created_at == repo_initial:
-            last_commit = get_git_last_commit_datetime(note_file)
-            if last_commit:
-                created_at = last_commit
-            else:
-                mtime = datetime.fromtimestamp(
-                    note_file.stat().st_mtime, tz=timezone.utc
-                )
-                if mtime != created_at:
-                    created_at = mtime
+        date = get_note_date(note_file)
 
         entries.append(
             NoteEntry(
                 file=note_file,
                 title=md_escape(read_note_title(note_file)),
-                created_at=created_at,
+                date=date,
             )
         )
 
     return sorted(
         entries,
-        key=lambda entry: (-entry.created_at.timestamp(), entry.title.lower()),
+        key=lambda entry: (-entry.date.timestamp(), entry.title.lower()),
     )
 
 
@@ -392,7 +473,7 @@ def render_index(entries: Iterable[str]) -> str:
 
 
 # -----------------------------
-# “全部笔记索引”生成（一级扫描）
+# "全部笔记索引"生成（一级扫描）
 # -----------------------------
 def build_all_notes_sections(categories: Sequence[Category]) -> List[str]:
     """按分类生成全部笔记的 Markdown 段落（仅扫描分类目录下的一级 .md 文件）。"""
@@ -414,7 +495,8 @@ def build_all_notes_sections(categories: Sequence[Category]) -> List[str]:
 
         for entry in note_entries:
             rel_path = rel_url(category.directory.name, entry.file.name)
-            sections.append(f"- [{entry.title}]({rel_path})")
+            date_str = entry.date.strftime("%Y-%m-%d")
+            sections.append(f"- {date_str} [{entry.title}]({rel_path})")
 
         sections.append("")
 
@@ -446,7 +528,8 @@ def build_category_index(category: Category) -> str:
         return "\n".join(parts).rstrip() + "\n"
 
     for entry in entries:
-        parts.append(f"- [{entry.title}]({rel_url(entry.file.name)})")
+        date_str = entry.date.strftime("%Y-%m-%d")
+        parts.append(f"- {date_str} [{entry.title}]({rel_url(entry.file.name)})")
     parts.append("")
     return "\n".join(parts).rstrip() + "\n"
 
@@ -456,6 +539,23 @@ def update_category_indexes(categories: Sequence[Category]) -> None:
         index_file = cat.directory / "index.md"
         content = build_category_index(cat)
         write_if_changed(index_file, content)
+
+
+# -----------------------------
+# 日期注入
+# -----------------------------
+def inject_dates_to_all_notes(categories: Sequence[Category]) -> None:
+    """为所有分类目录下的笔记文件注入标准化日期行。"""
+    injected_count = 0
+    for category in categories:
+        for note_file in category.directory.glob("*.md"):
+            if note_file.name.lower() == "index.md":
+                continue
+            date = get_note_date(note_file)
+            if inject_date_to_note(note_file, date):
+                injected_count += 1
+    if injected_count:
+        print(f"[OK] 已为 {injected_count} 篇笔记注入/更新日期行")
 
 
 # -----------------------------
@@ -478,14 +578,17 @@ def main() -> None:
     # 2) 聚合分类（顺序优先遵循 mkdocs.yml，再补 notes/ 中存在但未配置的）
     categories = gather_categories(nav_entries)
 
-    # 3) 生成总首页与“全部笔记”
+    # 3) 为所有笔记注入标准化日期行
+    inject_dates_to_all_notes(categories)
+
+    # 4) 生成总首页与"全部笔记"
     category_entries = build_category_entries(categories)
     index_content = render_index(category_entries)
     all_notes_content = render_all_notes(categories)
     write_if_changed(INDEX_PATH, index_content)
     write_if_changed(ALL_NOTES_PATH, all_notes_content)
 
-    # 4) 生成/更新每个分类目录的 index.md
+    # 5) 生成/更新每个分类目录的 index.md
     update_category_indexes(categories)
 
     print("[OK] 已更新：")
