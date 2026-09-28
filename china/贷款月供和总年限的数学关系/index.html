@@ -1,0 +1,960 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人投资与市场观察笔记">
+      
+      
+      
+        <link rel="canonical" href="https://hjyssg.github.io/stock_mindmap/china/%E8%B4%B7%E6%AC%BE%E6%9C%88%E4%BE%9B%E5%92%8C%E6%80%BB%E5%B9%B4%E9%99%90%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%B3%E7%B3%BB/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>贷款月供和总年限的数学关系 - Stock Mindmap Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans Pro";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Stock Mindmap Notes" class="md-header__button md-logo" aria-label="Stock Mindmap Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stock Mindmap Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              贷款月供和总年限的数学关系
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="切换夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hjyssg/stock_mindmap" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stock_mindmap
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../all-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  全部笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../strategy/" class="md-tabs__link">
+          
+  
+  
+  分类
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Stock Mindmap Notes" class="md-nav__button md-logo" aria-label="Stock Mindmap Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stock Mindmap Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hjyssg/stock_mindmap" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stock_mindmap
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../all-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全部笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分类
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    投资策略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    市场事件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../economy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    宏观经济
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国与政策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../railway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    铁路历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personal_finance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人理财
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    杂项灵感
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">贷款月供和总年限的数学关系<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><strong>日期</strong>：2026-08-31</p>
+<h2 id="_2">一、基本设定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>假设：</p>
+<ul>
+<li>贷款本金：100万元</li>
+<li>年利率：4%</li>
+<li>还款方式：等额本息</li>
+<li>按月还款</li>
+<li>贷款期限：<span class="arithmatex">\(T\)</span> 年</li>
+</ul>
+<p>月利率为：</p>
+<div class="arithmatex">\[
+r=\frac{4\%}{12}=0.3333\%
+\]</div>
+<p>总还款期数：</p>
+<div class="arithmatex">\[
+n=12T
+\]</div>
+<hr />
+<h2 id="_3">二、月供公式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>等额本息的月供为：</p>
+<div class="arithmatex">\[
+M=P\frac{r(1+r)^n}{(1+r)^n-1}
+\]</div>
+<p>也可以写成：</p>
+<div class="arithmatex">\[
+M=P\frac{r}{1-(1+r)^{-n}}
+\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(M\)</span>：每月月供</li>
+<li><span class="arithmatex">\(P\)</span>：贷款本金</li>
+<li><span class="arithmatex">\(r\)</span>：月利率</li>
+<li><span class="arithmatex">\(n\)</span>：总月数</li>
+</ul>
+<p>对于100万元、4%年利率：</p>
+<div class="arithmatex">\[
+M(T)=1,000,000
+\frac{0.04/12}
+{1-(1+0.04/12)^{-12T}}
+\]</div>
+<p>这就是<strong>贷款期限与月供之间的数学函数关系</strong>。</p>
+<hr />
+<h2 id="_4">三、贷款期限越长，月供越低，但下降越来越慢<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>计算结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">贷款期限</th>
+<th style="text-align: right;">月供</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1年</td>
+<td style="text-align: right;">¥85,150</td>
+</tr>
+<tr>
+<td style="text-align: right;">3年</td>
+<td style="text-align: right;">¥29,524</td>
+</tr>
+<tr>
+<td style="text-align: right;">5年</td>
+<td style="text-align: right;">¥18,417</td>
+</tr>
+<tr>
+<td style="text-align: right;">10年</td>
+<td style="text-align: right;">¥10,125</td>
+</tr>
+<tr>
+<td style="text-align: right;">15年</td>
+<td style="text-align: right;">¥7,397</td>
+</tr>
+<tr>
+<td style="text-align: right;">20年</td>
+<td style="text-align: right;">¥6,060</td>
+</tr>
+<tr>
+<td style="text-align: right;">25年</td>
+<td style="text-align: right;">¥5,278</td>
+</tr>
+<tr>
+<td style="text-align: right;">30年</td>
+<td style="text-align: right;">¥4,774</td>
+</tr>
+<tr>
+<td style="text-align: right;">35年</td>
+<td style="text-align: right;">¥4,428</td>
+</tr>
+<tr>
+<td style="text-align: right;">40年</td>
+<td style="text-align: right;">¥4,179</td>
+</tr>
+<tr>
+<td style="text-align: right;">50年</td>
+<td style="text-align: right;">¥3,857</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="贷款期限越长，月供越低但下降越来越慢；同时总利息持续上升" loading="lazy" src="../imgs/%E8%B4%B7%E6%AC%BE%E6%9C%88%E4%BE%9B%E4%B8%8E%E6%9C%9F%E9%99%90.png" width="760" /></p>
+<p>这条曲线具有非常明显的<strong>边际递减</strong>特征。</p>
+<p>例如：</p>
+<ul>
+<li>10年 → 20年：月供下降约 ¥4,065</li>
+<li>20年 → 30年：只下降约 ¥1,286</li>
+<li>30年 → 40年：只下降约 ¥595</li>
+<li>40年 → 50年：只下降约 ¥322</li>
+</ul>
+<p>所以，把贷款期限从10年延长到20年，对降低月供非常有效；但从30年继续拉长，效果已经越来越有限。</p>
+<hr />
+<h2 id="_5">四、为什么会出现这种曲线？<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>把公式写成：</p>
+<div class="arithmatex">\[
+M(T)=P\frac{r}{1-(1+r)^{-12T}}
+\]</div>
+<p>当 <span class="arithmatex">\(T\)</span> 增加时：</p>
+<div class="arithmatex">\[
+(1+r)^{-12T}\rightarrow0
+\]</div>
+<p>因此：</p>
+<div class="arithmatex">\[
+M(T)\rightarrow Pr
+\]</div>
+<p>对于100万元、4%年利率：</p>
+<div class="arithmatex">\[
+Pr=1,000,000\times\frac{0.04}{12}
+\approx ¥3,333
+\]</div>
+<p>也就是说，如果理论上把贷款期限无限延长，月供会无限接近：</p>
+<div class="arithmatex">\[
+\boxed{¥3,333/月}
+\]</div>
+<p>但永远不会真正低于这个水平。</p>
+<p>原因很简单：</p>
+<p><strong>100万元本金在4%的年利率下，仅仅每个月产生的利息就约为3333元。</strong></p>
+<p>期限再长，也不能让月供低于当月产生的利息，否则本金根本无法偿还。</p>
+<hr />
+<h2 id="_6">五、一个很重要的直觉<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>贷款期限实际上是在做一个交换：</p>
+<blockquote>
+<p><strong>用更长的时间，换取更低的月度现金流压力。</strong></p>
+</blockquote>
+<p>但是这种交换并不是线性的。</p>
+<p>前期延长期限：</p>
+<p><strong>月供下降很多。</strong></p>
+<p>后期继续延长：</p>
+<p><strong>月供下降越来越少。</strong></p>
+<p>因此：</p>
+<div class="arithmatex">\[
+\text{期限增加}
+\quad\Rightarrow\quad
+\text{月供下降}
+\]</div>
+<p>但：</p>
+<div class="arithmatex">\[
+\text{月供下降的边际收益}\downarrow
+\]</div>
+<p>同时：</p>
+<div class="arithmatex">\[
+\text{总利息}\uparrow
+\]</div>
+<p>这就是为什么30年期贷款在现金流上已经非常“长”，再继续延长，虽然仍然能够降低月供，但经济意义越来越小。</p>
+<hr />
+<h2 id="_7">六、总利息的变化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>100万元贷款、4%年利率下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">期限</th>
+<th style="text-align: right;">总利息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">5年</td>
+<td style="text-align: right;">¥10.50万</td>
+</tr>
+<tr>
+<td style="text-align: right;">10年</td>
+<td style="text-align: right;">¥21.49万</td>
+</tr>
+<tr>
+<td style="text-align: right;">15年</td>
+<td style="text-align: right;">¥33.14万</td>
+</tr>
+<tr>
+<td style="text-align: right;">20年</td>
+<td style="text-align: right;">¥45.44万</td>
+</tr>
+<tr>
+<td style="text-align: right;">25年</td>
+<td style="text-align: right;">¥58.35万</td>
+</tr>
+<tr>
+<td style="text-align: right;">30年</td>
+<td style="text-align: right;">¥71.87万</td>
+</tr>
+<tr>
+<td style="text-align: right;">40年</td>
+<td style="text-align: right;">¥100.61万</td>
+</tr>
+<tr>
+<td style="text-align: right;">50年</td>
+<td style="text-align: right;">¥131.42万</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到一个非常有意思的现象：</p>
+<p><strong>月供曲线趋于平坦，但总利息仍然持续快速增加。</strong></p>
+<p>例如：</p>
+<p>30年 → 40年：</p>
+<ul>
+<li>月供：¥4,774 → ¥4,179</li>
+<li>每月只少还约 ¥595</li>
+<li>但总利息增加约 ¥28.7万元</li>
+</ul>
+<p>所以，“贷款期限越长越划算”显然不是数学上的结论。</p>
+<hr />
+<h2 id="_8">七、真正值得观察的是边际变化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>如果把月供记作：</p>
+<div class="arithmatex">\[
+M(T)
+\]</div>
+<p>那么贷款期限增加一点点所带来的月供变化，可以理解为：</p>
+<div class="arithmatex">\[
+\frac{dM}{dT}&lt;0
+\]</div>
+<p>但随着 <span class="arithmatex">\(T\)</span> 增大：</p>
+<div class="arithmatex">\[
+\frac{dM}{dT}\rightarrow0
+\]</div>
+<p>也就是：</p>
+<blockquote>
+<p><strong>贷款期限越长，继续增加一年所能降低的月供越来越少。</strong></p>
+</blockquote>
+<p>这正是图形上“曲线越来越平”的数学原因。</p>
+<hr />
+<h2 id="_9">八、结论<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>对于固定利率的等额本息贷款：</p>
+<div class="arithmatex">\[
+\boxed{
+M(T)=P
+\frac{r}{1-(1+r)^{-12T}}
+}
+\]</div>
+<p>它是一条<strong>单调下降、逐渐趋于水平的曲线</strong>。</p>
+<p>对于100万元、4%利率：</p>
+<div class="arithmatex">\[
+\boxed{\text{月供最低的理论极限}\approx ¥3,333}
+\]</div>
+<p>因此，贷款期限从短期增加到中长期时，能够显著降低月供；但进入30年以后，继续增加期限的<strong>边际降月供效果非常弱</strong>，与此同时总利息仍然不断增加。</p>
+<p>从数学上说，这就是一个典型的：</p>
+<p><strong>“收益递减 + 渐近线”</strong>问题。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.tabs", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

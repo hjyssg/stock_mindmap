@@ -1,0 +1,2034 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人投资与市场观察笔记">
+      
+      
+      
+        <link rel="canonical" href="https://hjyssg.github.io/stock_mindmap/markets/%E6%9A%B4%E6%B6%A8%E5%88%86%E6%9E%90/spx_similarity_stress_test_report/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>S&P 500 历史相似性压力测试 — 定性分析报告 - Stock Mindmap Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans Pro";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sp-500" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Stock Mindmap Notes" class="md-header__button md-logo" aria-label="Stock Mindmap Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stock Mindmap Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              S&amp;P 500 历史相似性压力测试 — 定性分析报告
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="切换夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hjyssg/stock_mindmap" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stock_mindmap
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../all-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  全部笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../strategy/" class="md-tabs__link">
+          
+  
+  
+  分类
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Stock Mindmap Notes" class="md-nav__button md-logo" aria-label="Stock Mindmap Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stock Mindmap Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hjyssg/stock_mindmap" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stock_mindmap
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../all-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全部笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分类
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    投资策略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    市场事件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../economy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    宏观经济
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../china/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国与政策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../railway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    铁路历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../personal_finance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人理财
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    杂项灵感
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="sp-500">S&amp;P 500 历史相似性压力测试 — 定性分析报告<a class="headerlink" href="#sp-500" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>生成时间: 2026-05-09 11:01</p>
+</blockquote>
+<h2 id="_1">基准信息<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基准日期</td>
+<td>2026-05-08</td>
+</tr>
+<tr>
+<td>窗口期</td>
+<td>40 个交易日</td>
+</tr>
+<tr>
+<td>近40日涨幅</td>
+<td>10.88%</td>
+</tr>
+<tr>
+<td>容差范围</td>
+<td>±2%</td>
+</tr>
+<tr>
+<td>匹配数量</td>
+<td>129 个历史相似点</td>
+</tr>
+<tr>
+<td>去重窗口</td>
+<td>60 个交易日</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">后市表现统计摘要<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>20天后</th>
+<th>60天后</th>
+<th>120天后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>样本数</td>
+<td>129</td>
+<td>129</td>
+<td>129</td>
+</tr>
+<tr>
+<td>胜率</td>
+<td>58.9%</td>
+<td>65.1%</td>
+<td>74.4%</td>
+</tr>
+<tr>
+<td>平均值</td>
+<td>0.66%</td>
+<td>2.75%</td>
+<td>6.76%</td>
+</tr>
+<tr>
+<td>中位数</td>
+<td>0.69%</td>
+<td>2.37%</td>
+<td>6.80%</td>
+</tr>
+<tr>
+<td>最大值</td>
+<td>18.55%</td>
+<td>63.98%</td>
+<td>67.27%</td>
+</tr>
+<tr>
+<td>最小值</td>
+<td>-14.26%</td>
+<td>-32.75%</td>
+<td>-36.09%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">关键发现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">年代分布<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>出现次数</th>
+<th>平均后市120天收益</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1920s</td>
+<td>3</td>
+<td>11.73%</td>
+</tr>
+<tr>
+<td>1930s</td>
+<td>18</td>
+<td>10.57%</td>
+</tr>
+<tr>
+<td>1940s</td>
+<td>15</td>
+<td>3.08%</td>
+</tr>
+<tr>
+<td>1950s</td>
+<td>12</td>
+<td>4.38%</td>
+</tr>
+<tr>
+<td>1960s</td>
+<td>8</td>
+<td>6.96%</td>
+</tr>
+<tr>
+<td>1970s</td>
+<td>13</td>
+<td>4.30%</td>
+</tr>
+<tr>
+<td>1980s</td>
+<td>20</td>
+<td>8.38%</td>
+</tr>
+<tr>
+<td>1990s</td>
+<td>11</td>
+<td>9.02%</td>
+</tr>
+<tr>
+<td>2000s</td>
+<td>3</td>
+<td>3.58%</td>
+</tr>
+<tr>
+<td>2010s</td>
+<td>15</td>
+<td>4.43%</td>
+</tr>
+<tr>
+<td>2020s</td>
+<td>11</td>
+<td>8.33%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">历史相似点详细分析<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>以下列出所有 129 个历史相似点，按时间顺序排列，并附上对应的历史背景和后市表现。</p>
+<h3 id="1-1928-03-30-1929">1. 1928-03-30  —  咆哮的二十年代末期 / 1929大崩盘前夕<a class="headerlink" href="#1-1928-03-30-1929" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.98%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 2.44%</li>
+<li>60天后: -3.11%</li>
+<li>120天后: 10.06%</li>
+<li><strong>历史背景</strong>: 1920年代美国经济繁荣，股市投机狂热。1929年10月大崩盘开启了大萧条时代。</li>
+</ul>
+<h3 id="2-1928-09-06-1929">2. 1928-09-06  —  咆哮的二十年代末期 / 1929大崩盘前夕<a class="headerlink" href="#2-1928-09-06-1929" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.50%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 1.53%</li>
+<li>60天后: 14.18%</li>
+<li>120天后: 21.73%</li>
+<li><strong>历史背景</strong>: 1920年代美国经济繁荣，股市投机狂热。1929年10月大崩盘开启了大萧条时代。</li>
+</ul>
+<h3 id="3-1928-12-05-1929">3. 1928-12-05  —  咆哮的二十年代末期 / 1929大崩盘前夕<a class="headerlink" href="#3-1928-12-05-1929" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 12.21%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 4.37%</li>
+<li>60天后: 6.34%</li>
+<li>120天后: 3.40%</li>
+<li><strong>历史背景</strong>: 1920年代美国经济繁荣，股市投机狂热。1929年10月大崩盘开启了大萧条时代。</li>
+</ul>
+<h3 id="4-1933-01-04">4. 1933-01-04  —  罗斯福新政启动<a class="headerlink" href="#4-1933-01-04" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.34%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: -6.71%</li>
+<li>60天后: -8.95%</li>
+<li>120天后: 67.27%</li>
+<li><strong>历史背景</strong>: 罗斯福就任后推出'百日新政'，银行假日、脱离金本位、NRA等政策刺激市场大幅反弹。</li>
+</ul>
+<h3 id="5-1933-04-21">5. 1933-04-21  —  罗斯福新政启动<a class="headerlink" href="#5-1933-04-21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.71%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 18.55%</li>
+<li>60天后: 63.98%</li>
+<li>120天后: 37.63%</li>
+<li><strong>历史背景</strong>: 罗斯福就任后推出'百日新政'，银行假日、脱离金本位、NRA等政策刺激市场大幅反弹。</li>
+</ul>
+<h3 id="6-1933-07-25">6. 1933-07-25  —  罗斯福新政启动<a class="headerlink" href="#6-1933-07-25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.49%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 5.81%</li>
+<li>60天后: -16.57%</li>
+<li>120天后: 3.29%</li>
+<li><strong>历史背景</strong>: 罗斯福就任后推出'百日新政'，银行假日、脱离金本位、NRA等政策刺激市场大幅反弹。</li>
+</ul>
+<h3 id="7-1933-12-13">7. 1933-12-13  —  罗斯福新政启动<a class="headerlink" href="#7-1933-12-13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.64%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -1.18%</li>
+<li>60天后: 7.56%</li>
+<li>120天后: -4.71%</li>
+<li><strong>历史背景</strong>: 罗斯福就任后推出'百日新政'，银行假日、脱离金本位、NRA等政策刺激市场大幅反弹。</li>
+</ul>
+<h3 id="8-1935-05-01">8. 1935-05-01  —  新政中期复苏<a class="headerlink" href="#8-1935-05-01" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.97%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 4.98%</li>
+<li>60天后: 16.90%</li>
+<li>120天后: 32.07%</li>
+<li><strong>历史背景</strong>: 社会保障法通过，WPA等公共工程项目推动经济复苏。企业盈利改善，市场稳步上涨。</li>
+</ul>
+<h3 id="9-1935-07-31">9. 1935-07-31  —  新政中期复苏<a class="headerlink" href="#9-1935-07-31" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.69%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 0.18%</li>
+<li>60天后: 11.10%</li>
+<li>120天后: 25.54%</li>
+<li><strong>历史背景</strong>: 社会保障法通过，WPA等公共工程项目推动经济复苏。企业盈利改善，市场稳步上涨。</li>
+</ul>
+<h3 id="10-1935-10-25">10. 1935-10-25  —  新政中期复苏<a class="headerlink" href="#10-1935-10-25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.28%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 4.51%</li>
+<li>60天后: 11.42%</li>
+<li>120天后: 17.46%</li>
+<li><strong>历史背景</strong>: 社会保障法通过，WPA等公共工程项目推动经济复苏。企业盈利改善，市场稳步上涨。</li>
+</ul>
+<h3 id="11-1936-01-29">11. 1936-01-29  —  新政中期复苏<a class="headerlink" href="#11-1936-01-29" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.98%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 3.82%</li>
+<li>60天后: 2.05%</li>
+<li>120天后: 10.67%</li>
+<li><strong>历史背景</strong>: 社会保障法通过，WPA等公共工程项目推动经济复苏。企业盈利改善，市场稳步上涨。</li>
+</ul>
+<h3 id="12-1936-06-24">12. 1936-06-24  —  新政中期复苏<a class="headerlink" href="#12-1936-06-24" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 12.05%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 4.42%</li>
+<li>60天后: 4.68%</li>
+<li>120天后: 14.05%</li>
+<li><strong>历史背景</strong>: 社会保障法通过，WPA等公共工程项目推动经济复苏。企业盈利改善，市场稳步上涨。</li>
+</ul>
+<h3 id="13-1936-10-20">13. 1936-10-20  —  新政中期复苏<a class="headerlink" href="#13-1936-10-20" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.68%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 1.11%</li>
+<li>60天后: 2.98%</li>
+<li>120天后: 0.29%</li>
+<li><strong>历史背景</strong>: 社会保障法通过，WPA等公共工程项目推动经济复苏。企业盈利改善，市场稳步上涨。</li>
+</ul>
+<h3 id="14-1937-02-18-1937">14. 1937-02-18  —  1937年衰退<a class="headerlink" href="#14-1937-02-18-1937" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.43%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -2.74%</li>
+<li>60天后: -14.27%</li>
+<li>120天后: -6.64%</li>
+<li><strong>历史背景</strong>: 罗斯福过早收紧财政政策（削减赤字+美联储收紧准备金），导致'罗斯福衰退'，市场暴跌。</li>
+</ul>
+<h3 id="15-1937-08-10-1937">15. 1937-08-10  —  1937年衰退<a class="headerlink" href="#15-1937-08-10-1937" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 12.11%</li>
+<li><strong>后市表现</strong>: 🔴 大幅下跌</li>
+<li>20天后: -14.26%</li>
+<li>60天后: -32.75%</li>
+<li>120天后: -36.09%</li>
+<li><strong>历史背景</strong>: 罗斯福过早收紧财政政策（削减赤字+美联储收紧准备金），导致'罗斯福衰退'，市场暴跌。</li>
+</ul>
+<h3 id="16-1938-01-17">16. 1938-01-17  —  衰退后反弹<a class="headerlink" href="#16-1938-01-17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.04%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -5.57%</li>
+<li>60天后: -13.88%</li>
+<li>120天后: 1.89%</li>
+<li><strong>历史背景</strong>: 政府重新扩大财政支出，经济开始恢复。但欧洲局势紧张（慕尼黑协定）增加不确定性。</li>
+</ul>
+<h3 id="17-1938-05-25">17. 1938-05-25  —  衰退后反弹<a class="headerlink" href="#17-1938-05-25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.28%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 15.62%</li>
+<li>60天后: 29.04%</li>
+<li>120天后: 37.53%</li>
+<li><strong>历史背景</strong>: 政府重新扩大财政支出，经济开始恢复。但欧洲局势紧张（慕尼黑协定）增加不确定性。</li>
+</ul>
+<h3 id="18-1938-08-22">18. 1938-08-22  —  衰退后反弹<a class="headerlink" href="#18-1938-08-22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.04%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -3.10%</li>
+<li>60天后: 4.65%</li>
+<li>120天后: 1.71%</li>
+<li><strong>历史背景</strong>: 政府重新扩大财政支出，经济开始恢复。但欧洲局势紧张（慕尼黑协定）增加不确定性。</li>
+</ul>
+<h3 id="19-1938-11-23">19. 1938-11-23  —  衰退后反弹<a class="headerlink" href="#19-1938-11-23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 12.68%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -1.02%</li>
+<li>60天后: -4.45%</li>
+<li>120天后: -14.92%</li>
+<li><strong>历史背景</strong>: 政府重新扩大财政支出，经济开始恢复。但欧洲局势紧张（慕尼黑协定）增加不确定性。</li>
+</ul>
+<h3 id="20-1939-06-06">20. 1939-06-06  —  二战爆发<a class="headerlink" href="#20-1939-06-06" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.69%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -3.95%</li>
+<li>60天后: -2.57%</li>
+<li>120天后: 6.95%</li>
+<li><strong>历史背景</strong>: 9月德国入侵波兰，二战爆发。美国保持中立但军工订单增加，市场波动加剧。</li>
+</ul>
+<h3 id="21-1939-09-06">21. 1939-09-06  —  二战爆发<a class="headerlink" href="#21-1939-09-06" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.79%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 2.08%</li>
+<li>60天后: -2.00%</li>
+<li>120天后: -3.75%</li>
+<li><strong>历史背景</strong>: 9月德国入侵波兰，二战爆发。美国保持中立但军工订单增加，市场波动加剧。</li>
+</ul>
+<h3 id="22-1940-07-18">22. 1940-07-18  —  二战扩大 / 珍珠港事件<a class="headerlink" href="#22-1940-07-18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.18%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -0.70%</li>
+<li>60天后: 5.06%</li>
+<li>120天后: 7.85%</li>
+<li><strong>历史背景</strong>: 欧洲战事扩大，法国沦陷。1941年12月珍珠港事件后美国正式参战，战时经济体制启动。</li>
+</ul>
+<h3 id="23-1940-11-07">23. 1940-11-07  —  二战扩大 / 珍珠港事件<a class="headerlink" href="#23-1940-11-07" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.00%</li>
+<li><strong>后市表现</strong>: 🔴 大幅下跌</li>
+<li>20天后: -6.85%</li>
+<li>60天后: -10.89%</li>
+<li>120天后: -18.09%</li>
+<li><strong>历史背景</strong>: 欧洲战事扩大，法国沦陷。1941年12月珍珠港事件后美国正式参战，战时经济体制启动。</li>
+</ul>
+<h3 id="24-1941-07-14">24. 1941-07-14  —  二战扩大 / 珍珠港事件<a class="headerlink" href="#24-1941-07-14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.40%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -1.55%</li>
+<li>60天后: -2.91%</li>
+<li>120天后: -12.62%</li>
+<li><strong>历史背景</strong>: 欧洲战事扩大，法国沦陷。1941年12月珍珠港事件后美国正式参战，战时经济体制启动。</li>
+</ul>
+<h3 id="25-1942-06-17">25. 1942-06-17  —  二战转折期<a class="headerlink" href="#25-1942-06-17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.50%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 3.52%</li>
+<li>60天后: 0.59%</li>
+<li>120天后: 9.73%</li>
+<li><strong>历史背景</strong>: 中途岛海战、斯大林格勒战役等转折点。美国战时生产全面展开，经济强劲增长，市场开始反弹。</li>
+</ul>
+<h3 id="26-1942-10-08">26. 1942-10-08  —  二战转折期<a class="headerlink" href="#26-1942-10-08" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.28%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 4.19%</li>
+<li>60天后: 6.67%</li>
+<li>120天后: 26.45%</li>
+<li><strong>历史背景</strong>: 中途岛海战、斯大林格勒战役等转折点。美国战时生产全面展开，经济强劲增长，市场开始反弹。</li>
+</ul>
+<h3 id="27-1943-01-25">27. 1943-01-25  —  二战转折期<a class="headerlink" href="#27-1943-01-25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.63%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 5.83%</li>
+<li>60天后: 11.17%</li>
+<li>120天后: 21.84%</li>
+<li><strong>历史背景</strong>: 中途岛海战、斯大林格勒战役等转折点。美国战时生产全面展开，经济强劲增长，市场开始反弹。</li>
+</ul>
+<h3 id="28-1943-05-05">28. 1943-05-05  —  二战转折期<a class="headerlink" href="#28-1943-05-05" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.95%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 2.60%</li>
+<li>60天后: -0.67%</li>
+<li>120天后: -0.08%</li>
+<li><strong>历史背景</strong>: 中途岛海战、斯大林格勒战役等转折点。美国战时生产全面展开，经济强劲增长，市场开始反弹。</li>
+</ul>
+<h3 id="29-1944-06-15">29. 1944-06-15  —  二战胜利在望<a class="headerlink" href="#29-1944-06-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.90%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 3.93%</li>
+<li>60天后: -1.96%</li>
+<li>120天后: 2.04%</li>
+<li><strong>历史背景</strong>: 诺曼底登陆、布雷顿森林体系建立。1945年战争结束，市场对战后经济转型既期待又担忧。</li>
+</ul>
+<h3 id="30-1945-05-22">30. 1945-05-22  —  二战胜利在望<a class="headerlink" href="#30-1945-05-22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.60%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 2.50%</li>
+<li>60天后: -2.77%</li>
+<li>120天后: 14.79%</li>
+<li><strong>历史背景</strong>: 诺曼底登陆、布雷顿森林体系建立。1945年战争结束，市场对战后经济转型既期待又担忧。</li>
+</ul>
+<h3 id="31-1945-09-19">31. 1945-09-19  —  二战胜利在望<a class="headerlink" href="#31-1945-09-19" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.94%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 4.70%</li>
+<li>60天后: 7.08%</li>
+<li>120天后: 9.27%</li>
+<li><strong>历史背景</strong>: 诺曼底登陆、布雷顿森林体系建立。1945年战争结束，市场对战后经济转型既期待又担忧。</li>
+</ul>
+<h3 id="32-1946-01-28">32. 1946-01-28  —  战后调整期<a class="headerlink" href="#32-1946-01-28" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.14%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -7.89%</li>
+<li>60天后: -0.43%</li>
+<li>120天后: -3.71%</li>
+<li><strong>历史背景</strong>: 战时价格管制取消导致通胀飙升，消费品短缺。市场从战时高点大幅回调。</li>
+</ul>
+<h3 id="33-1946-04-30">33. 1946-04-30  —  战后调整期<a class="headerlink" href="#33-1946-04-30" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.77%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: 2.35%</li>
+<li>60天后: -6.72%</li>
+<li>120天后: -20.20%</li>
+<li><strong>历史背景</strong>: 战时价格管制取消导致通胀飙升，消费品短缺。市场从战时高点大幅回调。</li>
+</ul>
+<h3 id="34-1947-07-10">34. 1947-07-10  —  马歇尔计划 / 冷战开始<a class="headerlink" href="#34-1947-07-10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.81%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.26%</li>
+<li>60天后: -2.81%</li>
+<li>120天后: -3.06%</li>
+<li><strong>历史背景</strong>: 杜鲁门主义和马歇尔计划出台，冷战格局形成。美国经济从战时向和平时期转型。</li>
+</ul>
+<h3 id="35-1948-04-09">35. 1948-04-09  —  马歇尔计划 / 冷战开始<a class="headerlink" href="#35-1948-04-09" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.08%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 2.81%</li>
+<li>60天后: 10.20%</li>
+<li>120天后: 1.70%</li>
+<li><strong>历史背景</strong>: 杜鲁门主义和马歇尔计划出台，冷战格局形成。美国经济从战时向和平时期转型。</li>
+</ul>
+<h3 id="36-1949-08-02">36. 1949-08-02  —  战后繁荣开始<a class="headerlink" href="#36-1949-08-02" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.70%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.33%</li>
+<li>60天后: 6.53%</li>
+<li>120天后: 10.36%</li>
+<li><strong>历史背景</strong>: 1949年短暂衰退后经济复苏。1950年朝鲜战争爆发，军事开支增加刺激经济。</li>
+</ul>
+<h3 id="37-1950-09-07">37. 1950-09-07  —  战后繁荣开始<a class="headerlink" href="#37-1950-09-07" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.20%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 6.99%</li>
+<li>60天后: 3.87%</li>
+<li>120天后: 17.21%</li>
+<li><strong>历史背景</strong>: 1949年短暂衰退后经济复苏。1950年朝鲜战争爆发，军事开支增加刺激经济。</li>
+</ul>
+<h3 id="38-1951-01-26">38. 1951-01-26  —  朝鲜战争时期<a class="headerlink" href="#38-1951-01-26" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.76%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 2.35%</li>
+<li>60天后: 3.34%</li>
+<li>120天后: 2.92%</li>
+<li><strong>历史背景</strong>: 朝鲜战争持续，军工需求旺盛。美联储与财政部达成协议，获得货币政策独立性。</li>
+</ul>
+<h3 id="39-1951-08-27">39. 1951-08-27  —  朝鲜战争时期<a class="headerlink" href="#39-1951-08-27" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.02%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 2.32%</li>
+<li>60天后: -1.84%</li>
+<li>120天后: 1.36%</li>
+<li><strong>历史背景</strong>: 朝鲜战争持续，军工需求旺盛。美联储与财政部达成协议，获得货币政策独立性。</li>
+</ul>
+<h3 id="40-1952-01-22">40. 1952-01-22  —  朝鲜战争时期<a class="headerlink" href="#40-1952-01-22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.09%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -6.37%</li>
+<li>60天后: -4.70%</li>
+<li>120天后: 2.03%</li>
+<li><strong>历史背景</strong>: 朝鲜战争持续，军工需求旺盛。美联储与财政部达成协议，获得货币政策独立性。</li>
+</ul>
+<h3 id="41-1952-12-16">41. 1952-12-16  —  朝鲜战争时期<a class="headerlink" href="#41-1952-12-16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.03%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 0.23%</li>
+<li>60天后: 0.58%</li>
+<li>120天后: -9.47%</li>
+<li><strong>历史背景</strong>: 朝鲜战争持续，军工需求旺盛。美联储与财政部达成协议，获得货币政策独立性。</li>
+</ul>
+<h3 id="42-1954-05-21">42. 1954-05-21  —  艾森豪威尔繁荣<a class="headerlink" href="#42-1954-05-21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.73%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.24%</li>
+<li>60天后: 7.35%</li>
+<li>120天后: 15.45%</li>
+<li><strong>历史背景</strong>: 朝鲜战争结束后经济强劲复苏，消费信贷扩张，郊区化和汽车工业蓬勃发展。</li>
+</ul>
+<h3 id="43-1954-12-16">43. 1954-12-16  —  艾森豪威尔繁荣<a class="headerlink" href="#43-1954-12-16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.46%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 1.00%</li>
+<li>60天后: 0.09%</li>
+<li>120天后: 12.28%</li>
+<li><strong>历史背景</strong>: 朝鲜战争结束后经济强劲复苏，消费信贷扩张，郊区化和汽车工业蓬勃发展。</li>
+</ul>
+<h3 id="44-1955-06-30">44. 1955-06-30  —  艾森豪威尔繁荣<a class="headerlink" href="#44-1955-06-30" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.01%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 6.07%</li>
+<li>60天后: 3.85%</li>
+<li>120天后: 11.72%</li>
+<li><strong>历史背景</strong>: 朝鲜战争结束后经济强劲复苏，消费信贷扩张，郊区化和汽车工业蓬勃发展。</li>
+</ul>
+<h3 id="45-1955-12-07">45. 1955-12-07  —  艾森豪威尔繁荣<a class="headerlink" href="#45-1955-12-07" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.69%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.90%</li>
+<li>60天后: 1.12%</li>
+<li>120天后: -0.97%</li>
+<li><strong>历史背景</strong>: 朝鲜战争结束后经济强劲复苏，消费信贷扩张，郊区化和汽车工业蓬勃发展。</li>
+</ul>
+<h3 id="46-1956-03-16">46. 1956-03-16  —  苏伊士运河危机<a class="headerlink" href="#46-1956-03-16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.11%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.37%</li>
+<li>60天后: -3.70%</li>
+<li>120天后: -0.08%</li>
+<li><strong>历史背景</strong>: 苏伊士运河危机和匈牙利事件增加地缘政治风险。美国经济增长放缓，通胀压力上升。</li>
+</ul>
+<h3 id="47-1956-07-19">47. 1956-07-19  —  苏伊士运河危机<a class="headerlink" href="#47-1956-07-19" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.97%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -0.89%</li>
+<li>60天后: -4.70%</li>
+<li>120天后: -6.37%</li>
+<li><strong>历史背景</strong>: 苏伊士运河危机和匈牙利事件增加地缘政治风险。美国经济增长放缓，通胀压力上升。</li>
+</ul>
+<h3 id="48-1959-01-26">48. 1959-01-26  —  其他时期<a class="headerlink" href="#48-1959-01-26" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.31%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -0.52%</li>
+<li>60天后: 3.51%</li>
+<li>120天后: 6.53%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="49-1960-12-21">49. 1960-12-21  —  其他时期<a class="headerlink" href="#49-1960-12-21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.20%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 4.19%</li>
+<li>60天后: 12.70%</li>
+<li>120天后: 14.14%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="50-1961-04-17">50. 1961-04-17  —  肯尼迪新边疆<a class="headerlink" href="#50-1961-04-17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.24%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -2.69%</li>
+<li>60天后: -5.56%</li>
+<li>120天后: -2.49%</li>
+<li><strong>历史背景</strong>: 肯尼迪就任总统，推出减税和太空计划。猪湾事件和柏林墙危机增加冷战紧张。</li>
+</ul>
+<h3 id="51-1961-11-21">51. 1961-11-21  —  肯尼迪新边疆<a class="headerlink" href="#51-1961-11-21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.14%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -0.92%</li>
+<li>60天后: -1.66%</li>
+<li>120天后: -10.43%</li>
+<li><strong>历史背景</strong>: 肯尼迪就任总统，推出减税和太空计划。猪湾事件和柏林墙危机增加冷战紧张。</li>
+</ul>
+<h3 id="52-1962-08-17">52. 1962-08-17  —  古巴导弹危机<a class="headerlink" href="#52-1962-08-17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.11%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.12%</li>
+<li>60天后: 0.76%</li>
+<li>120天后: 12.13%</li>
+<li><strong>历史背景</strong>: 10月古巴导弹危机将世界推向核战争边缘。5月'肯尼迪暴跌'后市场在危机解除后强劲反弹。</li>
+</ul>
+<h3 id="53-1962-11-23">53. 1962-11-23  —  古巴导弹危机<a class="headerlink" href="#53-1962-11-23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.60%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 1.79%</li>
+<li>60天后: 7.57%</li>
+<li>120天后: 14.15%</li>
+<li><strong>历史背景</strong>: 10月古巴导弹危机将世界推向核战争边缘。5月'肯尼迪暴跌'后市场在危机解除后强劲反弹。</li>
+</ul>
+<h3 id="54-1964-01-23">54. 1964-01-23  —  约翰逊伟大社会<a class="headerlink" href="#54-1964-01-23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.75%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.69%</li>
+<li>60天后: 4.42%</li>
+<li>120天后: 8.11%</li>
+<li><strong>历史背景</strong>: 约翰逊推动民权法案和'伟大社会'计划，减税刺激经济增长，市场表现强劲。</li>
+</ul>
+<h3 id="55-1966-12-06">55. 1966-12-06  —  越战升级 / 信贷紧缩<a class="headerlink" href="#55-1966-12-06" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.44%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.94%</li>
+<li>60天后: 9.22%</li>
+<li>120天后: 11.94%</li>
+<li><strong>历史背景</strong>: 越战军费开支增加，美联储收紧货币政策。1966年出现'信贷紧缩'，市场回调后恢复。</li>
+</ul>
+<h3 id="56-1968-04-29-1968">56. 1968-04-29  —  动荡的1968年<a class="headerlink" href="#56-1968-04-29-1968" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.64%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -1.00%</li>
+<li>60天后: -1.14%</li>
+<li>120天后: 8.11%</li>
+<li><strong>历史背景</strong>: 马丁·路德·金和罗伯特·肯尼迪遇刺，越战升级，社会动荡。但经济仍在增长。</li>
+</ul>
+<h3 id="57-1970-07-21">57. 1970-07-21  —  尼克松经济政策<a class="headerlink" href="#57-1970-07-21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.58%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -1.01%</li>
+<li>60天后: 9.37%</li>
+<li>120天后: 19.49%</li>
+<li><strong>历史背景</strong>: 1970年经济衰退后复苏。1971年尼克松宣布美元脱离金本位（'尼克松冲击'），实施工资价格管制。</li>
+</ul>
+<h3 id="58-1970-10-15">58. 1970-10-15  —  尼克松经济政策<a class="headerlink" href="#58-1970-10-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.99%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -0.59%</li>
+<li>60天后: 9.53%</li>
+<li>120天后: 20.47%</li>
+<li><strong>历史背景</strong>: 1970年经济衰退后复苏。1971年尼克松宣布美元脱离金本位（'尼克松冲击'），实施工资价格管制。</li>
+</ul>
+<h3 id="59-1971-01-13">59. 1971-01-13  —  尼克松经济政策<a class="headerlink" href="#59-1971-01-13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.02%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 5.22%</li>
+<li>60天后: 10.31%</li>
+<li>120天后: 7.78%</li>
+<li><strong>历史背景</strong>: 1970年经济衰退后复苏。1971年尼克松宣布美元脱离金本位（'尼克松冲击'），实施工资价格管制。</li>
+</ul>
+<h3 id="60-1971-12-29">60. 1971-12-29  —  尼克松经济政策<a class="headerlink" href="#60-1971-12-29" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.14%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.28%</li>
+<li>60天后: 5.42%</li>
+<li>120天后: 5.77%</li>
+<li><strong>历史背景</strong>: 1970年经济衰退后复苏。1971年尼克松宣布美元脱离金本位（'尼克松冲击'），实施工资价格管制。</li>
+</ul>
+<h3 id="61-1972-12-11">61. 1972-12-11  —  尼克松连任 / 布雷顿森林崩溃<a class="headerlink" href="#61-1972-12-11" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.69%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: 0.94%</li>
+<li>60天后: -4.42%</li>
+<li>120天后: -12.43%</li>
+<li><strong>历史背景</strong>: 尼克松访华，美苏缓和。布雷顿森林体系正式终结，浮动汇率时代开始。'漂亮50'行情。</li>
+</ul>
+<h3 id="62-1973-10-12">62. 1973-10-12  —  其他时期<a class="headerlink" href="#62-1973-10-12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.95%</li>
+<li><strong>后市表现</strong>: 🔴 大幅下跌</li>
+<li>20天后: -5.51%</li>
+<li>60天后: -16.17%</li>
+<li>120天后: -15.35%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="63-1974-11-06">63. 1974-11-06  —  石油危机 / 滞胀<a class="headerlink" href="#63-1974-11-06" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.04%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -11.53%</li>
+<li>60天后: 4.11%</li>
+<li>120天后: 16.79%</li>
+<li><strong>历史背景</strong>: 1973年石油禁运后遗症，通胀高企+经济衰退（滞胀）。1974年尼克松辞职。1975年经济开始复苏。</li>
+</ul>
+<h3 id="64-1975-03-24">64. 1975-03-24  —  石油危机 / 滞胀<a class="headerlink" href="#64-1975-03-24" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.56%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 6.96%</li>
+<li>60天后: 11.02%</li>
+<li>120天后: 2.31%</li>
+<li><strong>历史背景</strong>: 1973年石油禁运后遗症，通胀高企+经济衰退（滞胀）。1974年尼克松辞职。1975年经济开始复苏。</li>
+</ul>
+<h3 id="65-1975-06-24">65. 1975-06-24  —  石油危机 / 滞胀<a class="headerlink" href="#65-1975-06-24" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.23%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -4.26%</li>
+<li>60天后: -10.75%</li>
+<li>120天后: -6.75%</li>
+<li><strong>历史背景</strong>: 1973年石油禁运后遗症，通胀高企+经济衰退（滞胀）。1974年尼克松辞职。1975年经济开始复苏。</li>
+</ul>
+<h3 id="66-1975-11-11">66. 1975-11-11  —  石油危机 / 滞胀<a class="headerlink" href="#66-1975-11-11" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.48%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -1.99%</li>
+<li>60天后: 10.67%</li>
+<li>120天后: 12.90%</li>
+<li><strong>历史背景</strong>: 1973年石油禁运后遗症，通胀高企+经济衰退（滞胀）。1974年尼克松辞职。1975年经济开始复苏。</li>
+</ul>
+<h3 id="67-1976-02-12">67. 1976-02-12  —  经济复苏<a class="headerlink" href="#67-1976-02-12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 12.73%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 0.61%</li>
+<li>60天后: 2.84%</li>
+<li>120天后: 4.17%</li>
+<li><strong>历史背景</strong>: 福特政府时期经济从衰退中恢复，通胀有所缓解。美国建国200周年。</li>
+</ul>
+<h3 id="68-1978-04-25">68. 1978-04-25  —  沃尔克前夜<a class="headerlink" href="#68-1978-04-25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.17%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 1.46%</li>
+<li>60天后: 1.44%</li>
+<li>120天后: 8.30%</li>
+<li><strong>历史背景</strong>: 卡特政府面临通胀上升和美元贬值压力。伊朗革命前夕，能源价格开始上涨。</li>
+</ul>
+<h3 id="69-1978-08-17">69. 1978-08-17  —  沃尔克前夜<a class="headerlink" href="#69-1978-08-17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.45%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -0.91%</li>
+<li>60天后: -9.81%</li>
+<li>120天后: -7.54%</li>
+<li><strong>历史背景</strong>: 卡特政府面临通胀上升和美元贬值压力。伊朗革命前夕，能源价格开始上涨。</li>
+</ul>
+<h3 id="70-1980-02-08">70. 1980-02-08  —  沃尔克紧缩 / 伊朗人质危机<a class="headerlink" href="#70-1980-02-08" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.70%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -9.70%</li>
+<li>60天后: -9.92%</li>
+<li>120天后: 3.15%</li>
+<li><strong>历史背景</strong>: 美联储主席沃尔克大幅加息对抗通胀，利率飙升至20%。伊朗人质危机，里根当选总统。</li>
+</ul>
+<h3 id="71-1980-05-22">71. 1980-05-22  —  沃尔克紧缩 / 伊朗人质危机<a class="headerlink" href="#71-1980-05-22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.47%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 4.63%</li>
+<li>60天后: 13.19%</li>
+<li>120天后: 23.47%</li>
+<li><strong>历史背景</strong>: 美联储主席沃尔克大幅加息对抗通胀，利率飙升至20%。伊朗人质危机，里根当选总统。</li>
+</ul>
+<h3 id="72-1980-08-26">72. 1980-08-26  —  沃尔克紧缩 / 伊朗人质危机<a class="headerlink" href="#72-1980-08-26" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.28%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 4.43%</li>
+<li>60天后: 12.46%</li>
+<li>120天后: 2.92%</li>
+<li><strong>历史背景</strong>: 美联储主席沃尔克大幅加息对抗通胀，利率飙升至20%。伊朗人质危机，里根当选总统。</li>
+</ul>
+<h3 id="73-1980-11-24">73. 1980-11-24  —  沃尔克紧缩 / 伊朗人质危机<a class="headerlink" href="#73-1980-11-24" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.47%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -2.18%</li>
+<li>60天后: -8.48%</li>
+<li>120天后: -4.17%</li>
+<li><strong>历史背景</strong>: 美联储主席沃尔克大幅加息对抗通胀，利率飙升至20%。伊朗人质危机，里根当选总统。</li>
+</ul>
+<h3 id="74-1982-05-04">74. 1982-05-04  —  里根牛市启动<a class="headerlink" href="#74-1982-05-04" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.43%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -4.61%</li>
+<li>60天后: -8.29%</li>
+<li>120天后: 18.19%</li>
+<li><strong>历史背景</strong>: 沃尔克紧缩结束，美联储开始降息。里根减税政策生效，1982年8月开启历史性大牛市。</li>
+</ul>
+<h3 id="75-1982-08-30">75. 1982-08-30  —  里根牛市启动<a class="headerlink" href="#75-1982-08-30" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.30%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 4.74%</li>
+<li>60天后: 12.98%</li>
+<li>120天后: 25.31%</li>
+<li><strong>历史背景</strong>: 沃尔克紧缩结束，美联储开始降息。里根减税政策生效，1982年8月开启历史性大牛市。</li>
+</ul>
+<h3 id="76-1982-11-24">76. 1982-11-24  —  里根牛市启动<a class="headerlink" href="#76-1982-11-24" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.07%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 4.36%</li>
+<li>60天后: 10.55%</li>
+<li>120天后: 22.28%</li>
+<li><strong>历史背景</strong>: 沃尔克紧缩结束，美联储开始降息。里根减税政策生效，1982年8月开启历史性大牛市。</li>
+</ul>
+<h3 id="77-1983-03-01">77. 1983-03-01  —  里根牛市启动<a class="headerlink" href="#77-1983-03-01" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.06%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.47%</li>
+<li>60天后: 10.16%</li>
+<li>120天后: 8.68%</li>
+<li><strong>历史背景</strong>: 沃尔克紧缩结束，美联储开始降息。里根减税政策生效，1982年8月开启历史性大牛市。</li>
+</ul>
+<h3 id="78-1984-08-10">78. 1984-08-10  —  里根繁荣<a class="headerlink" href="#78-1984-08-10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.99%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -0.70%</li>
+<li>60天后: 1.91%</li>
+<li>120天后: 8.59%</li>
+<li><strong>历史背景</strong>: 经济强劲增长，通胀受控。里根连任。1985年广场协议导致美元贬值。</li>
+</ul>
+<h3 id="79-1985-01-29">79. 1985-01-29  —  里根繁荣<a class="headerlink" href="#79-1985-01-29" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.54%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.85%</li>
+<li>60天后: 2.37%</li>
+<li>120天后: 8.47%</li>
+<li><strong>历史背景</strong>: 经济强劲增长，通胀受控。里根连任。1985年广场协议导致美元贬值。</li>
+</ul>
+<h3 id="80-1985-11-14">80. 1985-11-14  —  里根繁荣<a class="headerlink" href="#80-1985-11-14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.55%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 5.47%</li>
+<li>60天后: 8.47%</li>
+<li>120天后: 19.12%</li>
+<li><strong>历史背景</strong>: 经济强劲增长，通胀受控。里根连任。1985年广场协议导致美元贬值。</li>
+</ul>
+<h3 id="81-1986-03-07">81. 1986-03-07  —  广场协议后<a class="headerlink" href="#81-1986-03-07" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.44%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 1.36%</li>
+<li>60天后: 8.84%</li>
+<li>120天后: 12.29%</li>
+<li><strong>历史背景</strong>: 美元贬值刺激出口，经济持续增长。油价暴跌有利于消费者。切尔诺贝利核事故。</li>
+</ul>
+<h3 id="82-1987-01-15-1987">82. 1987-01-15  —  1987年股灾<a class="headerlink" href="#82-1987-01-15-1987" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.16%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 3.82%</li>
+<li>60天后: 10.17%</li>
+<li>120天后: 16.12%</li>
+<li><strong>历史背景</strong>: 年初市场大涨，10月19日'黑色星期一'单日暴跌22.6%。美联储迅速注入流动性稳定市场。</li>
+</ul>
+<h3 id="83-1987-06-22-1987">83. 1987-06-22  —  1987年股灾<a class="headerlink" href="#83-1987-06-22-1987" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.99%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -0.36%</li>
+<li>60天后: 1.68%</li>
+<li>120天后: -24.57%</li>
+<li><strong>历史背景</strong>: 年初市场大涨，10月19日'黑色星期一'单日暴跌22.6%。美联储迅速注入流动性稳定市场。</li>
+</ul>
+<h3 id="84-1987-12-22-1987">84. 1987-12-22  —  1987年股灾<a class="headerlink" href="#84-1987-12-22-1987" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.79%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -2.72%</li>
+<li>60天后: 8.47%</li>
+<li>120天后: 9.74%</li>
+<li><strong>历史背景</strong>: 年初市场大涨，10月19日'黑色星期一'单日暴跌22.6%。美联储迅速注入流动性稳定市场。</li>
+</ul>
+<h3 id="85-1988-03-21">85. 1988-03-21  —  股灾后恢复<a class="headerlink" href="#85-1988-03-21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.02%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -4.03%</li>
+<li>60天后: 2.12%</li>
+<li>120天后: -0.71%</li>
+<li><strong>历史背景</strong>: 市场从1987年股灾中恢复。老布什当选总统，冷战接近尾声。</li>
+</ul>
+<h3 id="86-1988-10-21">86. 1988-10-21  —  股灾后恢复<a class="headerlink" href="#86-1988-10-21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.45%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -6.06%</li>
+<li>60天后: 1.01%</li>
+<li>120天后: 6.24%</li>
+<li><strong>历史背景</strong>: 市场从1987年股灾中恢复。老布什当选总统，冷战接近尾声。</li>
+</ul>
+<h3 id="87-1989-01-31">87. 1989-01-31  —  柏林墙倒塌<a class="headerlink" href="#87-1989-01-31" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.44%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -3.48%</li>
+<li>60天后: 4.07%</li>
+<li>120天后: 12.17%</li>
+<li><strong>历史背景</strong>: 柏林墙倒塌，冷战结束。日本资产泡沫达到顶峰。美国经济增长放缓。</li>
+</ul>
+<h3 id="88-1989-05-17">88. 1989-05-17  —  柏林墙倒塌<a class="headerlink" href="#88-1989-05-17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.98%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.82%</li>
+<li>60天后: 8.59%</li>
+<li>120天后: 4.77%</li>
+<li><strong>历史背景</strong>: 柏林墙倒塌，冷战结束。日本资产泡沫达到顶峰。美国经济增长放缓。</li>
+</ul>
+<h3 id="89-1989-08-25">89. 1989-08-25  —  柏林墙倒塌<a class="headerlink" href="#89-1989-08-25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.65%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -1.79%</li>
+<li>60天后: -3.19%</li>
+<li>120天后: -4.46%</li>
+<li><strong>历史背景</strong>: 柏林墙倒塌，冷战结束。日本资产泡沫达到顶峰。美国经济增长放缓。</li>
+</ul>
+<h3 id="90-1990-12-06">90. 1990-12-06  —  海湾战争 / 经济衰退<a class="headerlink" href="#90-1990-12-06" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.55%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -4.14%</li>
+<li>60天后: 14.48%</li>
+<li>120天后: 17.59%</li>
+<li><strong>历史背景</strong>: 伊拉克入侵科威特，海湾战争爆发。美国经济陷入衰退，但战争迅速结束后市场反弹。苏联解体。</li>
+</ul>
+<h3 id="91-1991-03-18">91. 1991-03-18  —  海湾战争 / 经济衰退<a class="headerlink" href="#91-1991-03-18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 12.00%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 4.17%</li>
+<li>60天后: 1.22%</li>
+<li>120天后: 4.57%</li>
+<li><strong>历史背景</strong>: 伊拉克入侵科威特，海湾战争爆发。美国经济陷入衰退，但战争迅速结束后市场反弹。苏联解体。</li>
+</ul>
+<h3 id="92-1992-01-15">92. 1992-01-15  —  克林顿当选<a class="headerlink" href="#92-1992-01-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.97%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.87%</li>
+<li>60天后: -4.78%</li>
+<li>120天后: -2.76%</li>
+<li><strong>历史背景</strong>: 经济缓慢复苏，克林顿以'笨蛋，问题是经济'为口号当选。互联网商业化开始。</li>
+</ul>
+<h3 id="93-1996-03-07">93. 1996-03-07  —  互联网泡沫初期<a class="headerlink" href="#93-1996-03-07" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.22%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 0.34%</li>
+<li>60天后: 2.15%</li>
+<li>120天后: 1.95%</li>
+<li><strong>历史背景</strong>: 格林斯潘警告'非理性繁荣'。亚洲金融危机爆发但对美国影响有限。科技股开始加速上涨。</li>
+</ul>
+<h3 id="94-1996-09-19">94. 1996-09-19  —  互联网泡沫初期<a class="headerlink" href="#94-1996-09-19" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.99%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 3.51%</li>
+<li>60天后: 6.68%</li>
+<li>120天后: 17.75%</li>
+<li><strong>历史背景</strong>: 格林斯潘警告'非理性繁荣'。亚洲金融危机爆发但对美国影响有限。科技股开始加速上涨。</li>
+</ul>
+<h3 id="95-1997-02-12">95. 1997-02-12  —  互联网泡沫初期<a class="headerlink" href="#95-1997-02-12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.34%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -1.65%</li>
+<li>60天后: 2.74%</li>
+<li>120天后: 18.64%</li>
+<li><strong>历史背景</strong>: 格林斯潘警告'非理性繁荣'。亚洲金融危机爆发但对美国影响有限。科技股开始加速上涨。</li>
+</ul>
+<h3 id="96-1997-05-23">96. 1997-05-23  —  互联网泡沫初期<a class="headerlink" href="#96-1997-05-23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.45%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 3.73%</li>
+<li>60天后: 9.32%</li>
+<li>120天后: 6.96%</li>
+<li><strong>历史背景</strong>: 格林斯潘警告'非理性繁荣'。亚洲金融危机爆发但对美国影响有限。科技股开始加速上涨。</li>
+</ul>
+<h3 id="97-1998-02-23-ltcm">97. 1998-02-23  —  LTCM危机 / 亚洲金融危机<a class="headerlink" href="#97-1998-02-23-ltcm" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.54%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 5.53%</li>
+<li>60天后: 6.88%</li>
+<li>120天后: 3.54%</li>
+<li><strong>历史背景</strong>: 俄罗斯债务违约，长期资本管理公司(LTCM)崩溃。美联储紧急降息，市场V型反弹。</li>
+</ul>
+<h3 id="98-1998-10-27-ltcm">98. 1998-10-27  —  LTCM危机 / 亚洲金融危机<a class="headerlink" href="#98-1998-10-27-ltcm" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.29%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 11.04%</li>
+<li>60天后: 15.83%</li>
+<li>120天后: 25.42%</li>
+<li><strong>历史背景</strong>: 俄罗斯债务违约，长期资本管理公司(LTCM)崩溃。美联储紧急降息，市场V型反弹。</li>
+</ul>
+<h3 id="99-1999-02-02">99. 1999-02-02  —  互联网泡沫顶峰<a class="headerlink" href="#99-1999-02-02" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.72%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -2.72%</li>
+<li>60天后: 6.41%</li>
+<li>120天后: 6.80%</li>
+<li><strong>历史背景</strong>: 科技股狂热达到顶峰，纳斯达克在2000年3月见顶。Y2K恐慌。美联储开始加息。</li>
+</ul>
+<h3 id="100-1999-11-18">100. 1999-11-18  —  互联网泡沫顶峰<a class="headerlink" href="#100-1999-11-18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.29%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.27%</li>
+<li>60天后: -1.61%</li>
+<li>120天后: -1.20%</li>
+<li><strong>历史背景</strong>: 科技股狂热达到顶峰，纳斯达克在2000年3月见顶。Y2K恐慌。美联储开始加息。</li>
+</ul>
+<h3 id="101-2003-04-22">101. 2003-04-22  —  伊拉克战争前后<a class="headerlink" href="#101-2003-04-22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.46%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.92%</li>
+<li>60天后: 7.72%</li>
+<li>120天后: 13.90%</li>
+<li><strong>历史背景</strong>: 企业丑闻（世通、安然），市场在2002年10月触底。2003年伊拉克战争爆发后市场开始反弹。</li>
+</ul>
+<h3 id="102-2004-01-16">102. 2004-01-16  —  经济复苏期<a class="headerlink" href="#102-2004-01-16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.22%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 1.51%</li>
+<li>60天后: -1.02%</li>
+<li>120天后: -2.24%</li>
+<li><strong>历史背景</strong>: 美联储开始加息周期，房地产市场繁荣。小布什连任。经济稳步增长。</li>
+</ul>
+<h3 id="103-2004-12-15">103. 2004-12-15  —  经济复苏期<a class="headerlink" href="#103-2004-12-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.29%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -2.34%</li>
+<li>60天后: 0.09%</li>
+<li>120天后: -0.92%</li>
+<li><strong>历史背景</strong>: 美联储开始加息周期，房地产市场繁荣。小布什连任。经济稳步增长。</li>
+</ul>
+<h3 id="104-2010-03-29">104. 2010-03-29  —  欧债危机 / 闪崩<a class="headerlink" href="#104-2010-03-29" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.25%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: 0.89%</li>
+<li>60天后: -6.92%</li>
+<li>120天后: -4.06%</li>
+<li><strong>历史背景</strong>: 希腊债务危机引发欧洲主权债务恐慌。5月6日'闪崩'事件。美联储推出QE2。</li>
+</ul>
+<h3 id="105-2010-10-15">105. 2010-10-15  —  欧债危机 / 闪崩<a class="headerlink" href="#105-2010-10-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.35%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 1.96%</li>
+<li>60天后: 8.36%</li>
+<li>120天后: 13.38%</li>
+<li><strong>历史背景</strong>: 希腊债务危机引发欧洲主权债务恐慌。5月6日'闪崩'事件。美联储推出QE2。</li>
+</ul>
+<h3 id="106-2011-01-13">106. 2011-01-13  —  美国信用评级下调<a class="headerlink" href="#106-2011-01-13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.95%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 3.54%</li>
+<li>60天后: 3.17%</li>
+<li>120天后: 5.41%</li>
+<li><strong>历史背景</strong>: 标普下调美国AAA信用评级，欧债危机深化。市场剧烈波动但年末恢复。</li>
+</ul>
+<h3 id="107-2011-10-18">107. 2011-10-18  —  美国信用评级下调<a class="headerlink" href="#107-2011-10-18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.04%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 2.65%</li>
+<li>60天后: 5.20%</li>
+<li>120天后: 11.70%</li>
+<li><strong>历史背景</strong>: 标普下调美国AAA信用评级，欧债危机深化。市场剧烈波动但年末恢复。</li>
+</ul>
+<h3 id="108-2012-01-20">108. 2012-01-20  —  其他时期<a class="headerlink" href="#108-2012-01-20" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.26%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 3.49%</li>
+<li>60天后: 5.73%</li>
+<li>120天后: 1.47%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="109-2012-09-19">109. 2012-09-19  —  其他时期<a class="headerlink" href="#109-2012-09-19" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.17%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.01%</li>
+<li>60天后: -2.10%</li>
+<li>120天后: 6.82%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="110-2014-12-09">110. 2014-12-09  —  其他时期<a class="headerlink" href="#110-2014-12-09" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.87%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 0.11%</li>
+<li>60天后: 0.95%</li>
+<li>120天后: 2.63%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="111-2015-10-28">111. 2015-10-28  —  中国股灾 / 英国脱欧<a class="headerlink" href="#111-2015-10-28" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.22%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.07%</li>
+<li>60天后: -8.93%</li>
+<li>120天后: 0.05%</li>
+<li><strong>历史背景</strong>: 2015年8月中国股市暴跌引发全球恐慌。2016年英国脱欧公投、特朗普当选，市场先跌后涨。</li>
+</ul>
+<h3 id="112-2016-03-17">112. 2016-03-17  —  中国股灾 / 英国脱欧<a class="headerlink" href="#112-2016-03-17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.75%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 1.97%</li>
+<li>60天后: 1.89%</li>
+<li>120天后: 7.13%</li>
+<li><strong>历史背景</strong>: 2015年8月中国股市暴跌引发全球恐慌。2016年英国脱欧公投、特朗普当选，市场先跌后涨。</li>
+</ul>
+<h3 id="113-2016-08-23">113. 2016-08-23  —  中国股灾 / 英国脱欧<a class="headerlink" href="#113-2016-08-23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.32%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -1.09%</li>
+<li>60天后: -0.46%</li>
+<li>120天后: 6.89%</li>
+<li><strong>历史背景</strong>: 2015年8月中国股市暴跌引发全球恐慌。2016年英国脱欧公投、特朗普当选，市场先跌后涨。</li>
+</ul>
+<h3 id="114-2017-01-04">114. 2017-01-04  —  其他时期<a class="headerlink" href="#114-2017-01-04" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 8.90%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.44%</li>
+<li>60天后: 4.05%</li>
+<li>120天后: 6.55%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="115-2018-01-22">115. 2018-01-22  —  其他时期<a class="headerlink" href="#115-2018-01-22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.00%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -4.12%</li>
+<li>60天后: -4.39%</li>
+<li>120天后: -1.12%</li>
+<li><strong>历史背景</strong>: 无特定重大事件记录。</li>
+</ul>
+<h3 id="116-2019-02-15">116. 2019-02-15  —  贸易战缓和<a class="headerlink" href="#116-2019-02-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.01%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 2.07%</li>
+<li>60天后: 2.12%</li>
+<li>120天后: 5.85%</li>
+<li><strong>历史背景</strong>: 中美贸易战出现缓和迹象，美联储转向降息。市场在2018年底暴跌后强劲反弹。</li>
+</ul>
+<h3 id="117-2019-07-29">117. 2019-07-29  —  贸易战缓和<a class="headerlink" href="#117-2019-07-29" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.77%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -4.72%</li>
+<li>60天后: -0.83%</li>
+<li>120天后: 10.22%</li>
+<li><strong>历史背景</strong>: 中美贸易战出现缓和迹象，美联储转向降息。市场在2018年底暴跌后强劲反弹。</li>
+</ul>
+<h3 id="118-2019-11-27">118. 2019-11-27  —  贸易战缓和<a class="headerlink" href="#118-2019-11-27" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.21%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 2.74%</li>
+<li>60天后: -1.18%</li>
+<li>120天后: -6.50%</li>
+<li><strong>历史背景</strong>: 中美贸易战出现缓和迹象，美联储转向降息。市场在2018年底暴跌后强劲反弹。</li>
+</ul>
+<h3 id="119-2020-05-13">119. 2020-05-13  —  新冠疫情<a class="headerlink" href="#119-2020-05-13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 11.50%</li>
+<li><strong>后市表现</strong>: 🟢 强劲上涨</li>
+<li>20天后: 6.46%</li>
+<li>60天后: 18.84%</li>
+<li>120天后: 17.38%</li>
+<li><strong>历史背景</strong>: COVID-19全球大流行，3月市场暴跌34%后在史无前例的财政和货币刺激下V型反弹。</li>
+</ul>
+<h3 id="120-2020-08-10">120. 2020-08-10  —  新冠疫情<a class="headerlink" href="#120-2020-08-10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.49%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: -0.85%</li>
+<li>60天后: 0.26%</li>
+<li>120天后: 12.30%</li>
+<li><strong>历史背景</strong>: COVID-19全球大流行，3月市场暴跌34%后在史无前例的财政和货币刺激下V型反弹。</li>
+</ul>
+<h3 id="121-2020-11-16">121. 2020-11-16  —  新冠疫情<a class="headerlink" href="#121-2020-11-16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.54%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 1.87%</li>
+<li>60天后: 8.49%</li>
+<li>120天后: 14.48%</li>
+<li><strong>历史背景</strong>: COVID-19全球大流行，3月市场暴跌34%后在史无前例的财政和货币刺激下V型反弹。</li>
+</ul>
+<h3 id="122-2021-04-23">122. 2021-04-23  —  疫情后复苏<a class="headerlink" href="#122-2021-04-23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.16%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -0.58%</li>
+<li>60天后: 3.42%</li>
+<li>120天后: 4.39%</li>
+<li><strong>历史背景</strong>: 疫苗推广，经济重启。通胀开始上升但美联储坚持'暂时性'论调。Meme股热潮。</li>
+</ul>
+<h3 id="123-2022-08-10">123. 2022-08-10  —  美联储激进加息<a class="headerlink" href="#123-2022-08-10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 12.28%</li>
+<li><strong>后市表现</strong>: 🔴 温和下跌</li>
+<li>20天后: -4.85%</li>
+<li>60天后: -11.65%</li>
+<li>120天后: -2.16%</li>
+<li><strong>历史背景</strong>: 俄乌战争爆发，通胀飙升至40年高点。美联储激进加息，科技股大幅回调。</li>
+</ul>
+<h3 id="124-2022-11-22">124. 2022-11-22  —  美联储激进加息<a class="headerlink" href="#124-2022-11-22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.77%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: -3.13%</li>
+<li>60天后: -0.16%</li>
+<li>120天后: 3.88%</li>
+<li><strong>历史背景</strong>: 俄乌战争爆发，通胀飙升至40年高点。美联储激进加息，科技股大幅回调。</li>
+</ul>
+<h3 id="125-2023-07-03-ai">125. 2023-07-03  —  AI热潮 / 银行危机<a class="headerlink" href="#125-2023-07-03-ai" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.71%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 2.72%</li>
+<li>60天后: -4.06%</li>
+<li>120天后: 6.53%</li>
+<li><strong>历史背景</strong>: 硅谷银行倒闭引发短暂恐慌。ChatGPT引爆AI投资热潮，'七巨头'科技股领涨。</li>
+</ul>
+<h3 id="126-2023-12-14-ai">126. 2023-12-14  —  AI热潮 / 银行危机<a class="headerlink" href="#126-2023-12-14-ai" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 9.39%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 0.98%</li>
+<li>60天后: 9.44%</li>
+<li>120天后: 13.29%</li>
+<li><strong>历史背景</strong>: 硅谷银行倒闭引发短暂恐慌。ChatGPT引爆AI投资热潮，'七巨头'科技股领涨。</li>
+</ul>
+<h3 id="127-2024-06-17-ai">127. 2024-06-17  —  AI持续 / 降息预期<a class="headerlink" href="#127-2024-06-17-ai" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.19%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 2.10%</li>
+<li>60天后: 2.24%</li>
+<li>120天后: 11.27%</li>
+<li><strong>历史背景</strong>: 美联储开始降息周期，AI投资热情持续。大选年市场表现强劲。</li>
+</ul>
+<h3 id="128-2024-10-01-ai">128. 2024-10-01  —  AI持续 / 降息预期<a class="headerlink" href="#128-2024-10-01-ai" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.07%</li>
+<li><strong>后市表现</strong>: 🟡 横盘震荡</li>
+<li>20天后: 2.18%</li>
+<li>60天后: 5.76%</li>
+<li>120天后: 0.06%</li>
+<li><strong>历史背景</strong>: 美联储开始降息周期，AI投资热情持续。大选年市场表现强劲。</li>
+</ul>
+<h3 id="129-2025-06-02">129. 2025-06-02  —  关税冲击后反弹<a class="headerlink" href="#129-2025-06-02" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>40日涨幅</strong>: 10.00%</li>
+<li><strong>后市表现</strong>: 🟢 温和上涨</li>
+<li>20天后: 4.41%</li>
+<li>60天后: 9.19%</li>
+<li>120天后: 10.16%</li>
+<li><strong>历史背景</strong>: 特朗普关税政策引发市场剧烈波动，随后贸易谈判缓和带来强劲反弹。</li>
+</ul>
+<h2 id="_6">总结与启示<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>基于 S&amp;P 500 自 1927 年以来的历史数据，当市场在 40 个交易日内上涨约 10.9%（±2%）时：</p>
+<ol>
+<li><strong>总体偏多</strong>: 120天后胜率为 74.4%，中位数收益为 6.80%，表明这种涨幅后市场继续上涨的概率较高。</li>
+<li><strong>但风险不可忽视</strong>: 历史上也出现过严重的下跌案例（最差 -36.1%），尤其在经济衰退或金融危机期间。</li>
+<li><strong>关键风险场景</strong>: 1929年大崩盘前、1937年衰退、1987年股灾前、2007-2008年金融危机等时期，类似涨幅后出现了显著回调。</li>
+<li><strong>时间越长越有利</strong>: 胜率从20天的 59% 提升到120天的 74%，说明短期波动大但中期趋势偏正。</li>
+</ol>
+<p>⚠️ <strong>免责声明</strong>: 历史表现不代表未来收益。本分析仅供参考，不构成投资建议。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,9 @@
+/* 公式溢出时的横向滚动，避免长公式撑破版面（配合 MathJax 使用） */
+.md-typeset .arithmatex {
+  overflow-x: auto;
+  padding: 0.2em 0;
+}
+
+.md-typeset .arithmatex > * {
+  overflow-x: auto;
+}
